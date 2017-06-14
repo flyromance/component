@@ -37,7 +37,7 @@ exports.getHtmlPlugins = function (HtmlWebpackPlugin) {
     // item的格式与输入的匹配模式一样
     filenames.forEach(function (item, index) {
         var options = {
-            filename: '[name]'
+            filename: '',
             template: item,
             inject: false
         }

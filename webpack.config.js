@@ -16,7 +16,35 @@ module.exports = {
         filename: 'js/[name].[chunkhash].js'
     },
     module: {
+        loaders: [
+            {
+                test: /\.jsx?$/,
+                loader: 'babel',
+                query: {
+                    presets: ['es2015', 'react']
+                }
+            },
+            {   
+                test: /\.hbs/,
+                loader: 'handlebars'
+            },
+            {
+                test: /\.html/,
+                loader: 'html-loader'
+            },
+            {
+                test: /\.css$/,
+                loader: 'style!loader!postcss',
 
+            },
+            {
+                test: /\.(png|jpg|jpeg|gif|.ico)/i,
+                loader: 'url-loader',
+                query: {
+                    limit: 2000
+                }
+            }
+        ]
     },
     plugins: [].concat(htmlEntryPlugins)
 
