@@ -7,7 +7,7 @@ var jsEntrys = $util.getEntry('js');
 // var htmlEntrys = $util.getEntry('html');
 var htmlEntryPlugins = $util.getHtmlPlugins(HtmlWebpackPlugin);
 
-console.log(jsEntrys, htmlEntryPlugins);
+// console.log(jsEntrys, htmlEntryPlugins);
 
 module.exports = {
     entry: jsEntrys,
@@ -16,32 +16,36 @@ module.exports = {
         filename: 'js/[name].[chunkhash].js'
     },
     module: {
-        loaders: [
+        rules: [
             {
                 test: /\.jsx?$/,
-                loader: 'babel',
+                loader: 'babel-loader',
+                exclude: /node_modules/,
                 query: {
-                    presets: ['es2015', 'react']
+                    presets: ['es2015']
                 }
             },
             {   
-                test: /\.hbs/,
-                loader: 'handlebars'
+                test: /\.hbs$/,
+                exclude: /node_modules/,
+                loader: 'handlebars-loader'
             },
-            {
-                test: /\.html/,
-                loader: 'html-loader'
-            },
+            // {
+            //     test: /\.html$/,
+            //     loader: 'ejs-loader'
+            // },
             {
                 test: /\.css$/,
-                loader: 'style!loader!postcss',
-
+                exclude: /node_modules/,
+                loader: 'style-loader!css-loader'
             },
             {
-                test: /\.(png|jpg|jpeg|gif|.ico)/i,
+                test: /\.(png|jpg|gif)$/i,
+                exclude: /node_modules/,
                 loader: 'url-loader',
                 query: {
-                    limit: 2000
+                    limit: 2000,
+                    name: '[name]-[hash].[ext]'
                 }
             }
         ]

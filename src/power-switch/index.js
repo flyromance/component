@@ -2,7 +2,7 @@ var $ = require("./script/jquery-1.11.3.js");
 
 require("./script/jquery-powerSwitch.js");
 
-require('./style/index.css');
+import './style/index.css';
 
 var hbs = require('./template/list.hbs');
 

@@ -54,14 +54,14 @@ a{color:#34538b; text-decoration: none;}
 .tab_limit { width: 300px; margin: auto; }
 .tab_auto_play { position: relative; text-align: center; *zoom:1; z-index: 1; }
 .prev, .next { position: absolute; width: 30px; height: 60px; background: #bbb center no-repeat; border-radius: 4px; }
-.prev { background-image: url(img/prev.png); }
-.next { background-image: url(img/next.png); }
+.prev { background-image: url(../image/prev.png); }
+.next { background-image: url(../image/next.png); }
 .prev:hover, .next:hover { background-color: #aaa; }
 .tab_auto_play .prev { left: -60px; top: 110px; }
 .tab_auto_play .next { right: -60px; top: 110px; }
 .pause, .play { width: 50px; height: 50px; position: absolute; left: 50%; top: 110px; margin-left: -25px; z-index: 1; }
-.pause { background: url(img/pause.png) no-repeat 0 -50px; }
-.play { background: url(img/play.png) no-repeat 0 -50px; }
+.pause { background: url(../image/pause.png) no-repeat 0 -50px; }
+.play { background: url(../image/play.png) no-repeat 0 -50px; }
 /* Carousel */
 .caro_trigger { position: relative; width: 400px; margin-left: auto; margin-right: auto; font-size: 12px; }
 .caro_trigger .disabled { color: #999; text-decoration: none; pointer-events: none; cursor: default; }
