@@ -7,8 +7,8 @@
 <meta name="description" content="张鑫旭web前端学习实例页面之jQuery万能切换插件powerSwitch" />
 <meta name="keywords" content="powerSwitch, jQuery, 插件" />
 <meta name="author" content="张鑫旭, zhangxinxu" />
-<title>万能切换插件powerSwitch测试页面 » 张鑫旭-鑫空间-鑫生活</title>
-<link rel="stylesheet" href="index.css">
+<title>万能切换插件powerSwitch测试页面</title>
+
 <link rel="shortcut icon" href="zxx_ico.ico" />
 </head>
 
@@ -17,7 +17,7 @@
     <div class="zxx_in_box">
         <div class="zxx_header">
             <a href="http://www.zhangxinxu.com/">
-                <img class="l" src="index_logo.gif" alt="张鑫旭-鑫空间-鑫生活" />
+                <img class="l" src="require(./image/index_logo.gif)" alt="张鑫旭-鑫空间-鑫生活" />
             </a>
             <span class="zxx_author_time">by <span role="author">zhangxinxu</span> <span role="timer">2013-10-21 15:51</span></span>
             <a href="api/index.html" class="zxx_api" title="访问插件API使用">API</a>
@@ -618,116 +618,6 @@ $("#moreList").powerSwitch({
         </div>
     </div>
 </div>
-<script src="jquery.min.js?v=1.4.4"></script>
-<script src="jquery-powerSwitch.js"></script>
-<script>
-$(".tabNormal").powerSwitch({
-	classAdd: "tab_on"
-});
-$(".tabJustHover").powerSwitch({
-	classAdd: "tab_on",
-	eventType: "hover",
-	onSwitch: function(target) {
-		var img = target.find("img").get(0);
-		if (img && !img.src) {
-			img.src = img.getAttribute("data-src");	
-		}
-	}	
-});
-$("#tabTransUl a").powerSwitch({
-	classAdd: "tab_on",
-	animation: "translate"
-});
-$("#tabAutoTrigger a").powerSwitch({
-	classAdd: "tab_on",
-	animation: "translate",
-	eventType: "hover",
-	hoverStop: false,
-	autoTime: 3000,
-	container: $("#tabAutoOperate")
-});
-$("#caroTriggerOut a").powerSwitch({
-	container: $("#caroBox"),
-	onSwitch: function(target) {
-		target.each(function() {
-			var img = $(this).find("img").get(0);
-			if (img && !img.src) {
-				img.src = img.getAttribute("data-src");	
-			}
-		});
-	}
-});
-$("#caroTriggerOut2 a").powerSwitch({
-	container: $("#caroBox2"),
-	number: 2,
-	onSwitch: function(target) {
-		target.each(function() {
-			var img = $(this).find("img").get(0);
-			if (img && !img.src) {
-				img.src = img.getAttribute("data-src");	
-			}
-		});
-	}
-});
-$("#caroTriggerOut3 a").powerSwitch({
-	container: $("#caroBox3"),
-	animation: "none",
-	direction: "vertical",
-	onSwitch: function(target) {
-		target.each(function() {
-			var img = $(this).find("img").get(0);
-			if (img && !img.src) {
-				img.src = img.getAttribute("data-src");	
-			}
-		});
-	}
-});
-// 无限切换
-$("#caroEndless a").powerSwitch({
-	classDisabled: '',
-	container: $("#caroBoxEnd"),
-	number: 2
-});
 
-
-$(".handTitle").powerSwitch({
-	animation: "slide"
-});
-
-$("#navvBar h4").powerSwitch({
-	toggle: true,
-	onSwitch: function(target, display) {
-		// 三角变化
-		$(this).find("span").html(display? "▼": "▶");
-	}
-});
-
-var initHtmlMore = $("#moreToggle").powerSwitch({
-	toggle: true,
-	onSwitch: function(target, display) {
-		// 提示文字变化
-		if (display == false) {
-			$(this).html(initHtmlMore);
-		} else {
-			$(this).html($(this).attr("data-toggle"));
-		}		
-	}
-}).html();
-
-$("#wordSlide li").powerSwitch({
-	autoTime: 3000,
-	direction: "vertical",
-	animation: "translate"
-});
-
-$("#moreCommentBtn").powerSwitch({
-	number: 2
-});
-
-// 一次展开多个列表
-$("#moreList").powerSwitch({
-	toggle: true	
-});
-</script>
 </body>
 </html>

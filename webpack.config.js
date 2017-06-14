@@ -16,6 +16,7 @@ module.exports = {
         filename: 'js/[name].[chunkhash].js'
     },
     module: {
+
     },
     plugins: [].concat(htmlEntryPlugins)
 
