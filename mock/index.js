@@ -1,7 +1,7 @@
 var express = require('express');
 var app = express();
 var bodyParser = require('body-parser');
-
+var url = require('url');
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -56,7 +56,8 @@ function doHandler(method, handle) {
                 app[method](path, function (req, res) {
                     var query = req.query;
                     var jsonp = query.callback ? query.callback : '';
-
+                    console.log(req.query, req.path, req.url);
+                    console.log(url.parse(req.url));
                     if (jsonp) {
                         res.writeHeader(200, {
                             "Content-Type": "application/javascript",
