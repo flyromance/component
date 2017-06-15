@@ -25,7 +25,7 @@ module.exports = {
                     presets: ['es2015']
                 }
             },
-            {   
+            {
                 test: /\.hbs$/,
                 exclude: /node_modules/,
                 loader: 'handlebars-loader'
@@ -50,6 +50,28 @@ module.exports = {
             }
         ]
     },
-    plugins: [].concat(htmlEntryPlugins)
+    
+    plugins: [].concat(htmlEntryPlugins),
+
+    devServer: {
+        historyApiFallback: true,
+        publicPath: '/dist/',
+        inline: true,
+        hot: true,
+        port: 8002,
+        setup: function () {
+            app.set('views', path.resolve(__dirname, './example'));
+            app.set('view engine', 'html');
+
+            app.get(/\/.*\.html/, function (req, res) {
+                var name = req.path.replace(/\.html.*/, "").replace('/', '');
+                res.render(name);
+            });
+
+            app.get("/", function (req, res) {
+                res.redirect("/index.html");
+            });
+        }
+    }
 
 }

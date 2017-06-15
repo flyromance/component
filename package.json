@@ -5,6 +5,7 @@
   "main": "webpack.config.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "webpack-dev-server --open --hot --colors --profile",
     "build": "rm -rf ./dist && webpack --colors --display-error-details --display-modules --progress --display-reasons"
   },
   "author": "",
