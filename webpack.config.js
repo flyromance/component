@@ -13,19 +13,20 @@ module.exports = {
     entry: jsEntrys,
     output: {
         path: path.resolve(__dirname, './dist'), // 2版本必须用绝对路径
-        filename: 'js/[name].[chunkhash].js'
+        filename: '[name].js',
+        // publicPath: '',
+        // library: '[name]',
+        // libraryTarget: "amd"
     },
     module: {
-        rules: [
-            {
+        rules: [{
                 test: /\.jsx?$/,
                 loader: 'babel-loader',
                 exclude: /node_modules/,
                 query: {
                     presets: ['es2015']
                 }
-            },
-            {
+            }, {
                 test: /\.hbs$/,
                 exclude: /node_modules/,
                 loader: 'handlebars-loader'
@@ -38,8 +39,7 @@ module.exports = {
                 test: /\.css$/,
                 exclude: /node_modules/,
                 loader: 'style-loader!css-loader'
-            },
-            {
+            }, {
                 test: /\.(png|jpg|gif)$/i,
                 exclude: /node_modules/,
                 loader: 'url-loader',
@@ -50,7 +50,7 @@ module.exports = {
             }
         ]
     },
-    
+
     plugins: [].concat(htmlEntryPlugins),
 
     devServer: {
@@ -62,7 +62,8 @@ module.exports = {
         open: true,
         setup: function (app) {
             app.set('views', path.resolve(__dirname, './example'));
-            app.set('view engine', 'html');
+            // app.engine('html', hbs.__express);
+            app.set('view engine', 'ejs');
 
             app.get(/\/.*\.html/, function (req, res) {
                 var name = req.path.replace(/\.html.*/, "").replace('/', '');
@@ -72,6 +73,15 @@ module.exports = {
             app.get("/", function (req, res) {
                 res.redirect("/index.html");
             });
+        },
+        proxy: {
+            '/api/*': {
+                // 当前devserver去请求127.0.0.1:7788
+                // 前端不存在跨域
+                target: 'http://127.0.0.1:7788', 
+                // pathRewrite: { '^/api': '/campaign_huggies/t3store_freeuse/admin' },
+                changeOrigin: true
+            }
         }
     }
 
