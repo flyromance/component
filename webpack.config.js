@@ -59,7 +59,8 @@ module.exports = {
         inline: true,
         hot: true,
         port: 8002,
-        setup: function () {
+        open: true,
+        setup: function (app) {
             app.set('views', path.resolve(__dirname, './example'));
             app.set('view engine', 'html');
 
