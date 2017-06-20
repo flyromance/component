@@ -3,3 +3,4 @@ node_modules
 npm-debug.log
 *.bak
 dist
+bower_components

@@ -21,18 +21,15 @@ module.exports = {
     module: {
         rules: [{
             test: /\.jsx?$/,
+            loader: 'babel-loader',
             exclude: /node_modules/,
-            loader: 'babel-loader', // 必须用loader，不能简写必须加loader后缀，多个用数组
-            options: { // 必须用options配置loader参数
+            query: {
                 presets: ['es2015']
             }
         }, {
             test: /\.hbs$/,
             exclude: /node_modules/,
-            loader: 'handlebars-loader',
-            options: {
-
-            }
+            loader: 'handlebars-loader'
         },
         // {
         //     test: /\.html$/,
@@ -41,16 +38,17 @@ module.exports = {
         {
             test: /\.css$/,
             exclude: /node_modules/,
-            loader: ['style-loader', 'css-loader']
+            loader: 'style-loader!css-loader'
         }, {
             test: /\.(png|jpg|gif)$/i,
             exclude: /node_modules/,
             loader: 'url-loader',
-            options: {
+            query: {
                 limit: 2000,
                 name: '[name]-[hash].[ext]'
             }
-        }]
+        }
+        ]
     },
 
     // plugins: [].concat(htmlEntryPlugins),
@@ -58,8 +56,8 @@ module.exports = {
     devServer: {
         historyApiFallback: true,
         publicPath: '/dist/',
-        // inline: true,
-        // hot: true, // 不能在config.js中配置
+        inline: true,
+        hot: true,
         port: 8002,
         open: true,
         setup: function (app) {
@@ -71,7 +69,7 @@ module.exports = {
 
             app.get(reg, function (req, res) {
                 // var name = req.path.replace(/\.html.*/, "").replace('/', '');
-                // console.log(req.path);
+                console.log(req.path);
                 var match = req.path.match(reg);
                 var name = match ? match[1] ? match[1] : '' : '';
                 name = name || 'index';

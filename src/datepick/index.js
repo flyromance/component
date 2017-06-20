@@ -1,6 +1,4 @@
-require('./widget.css');
-
-var widget = require('./widget.js');
+require('./style/widget.css');
 
 function getData(year, month) {
     var ret = [];
@@ -132,6 +130,5 @@ document.addEventListener('click', function (e) {
         init('.ui-datepick-body', year, month);
     }
 });
-
 
 init('.ui-datepick-body', 2017, 1);
