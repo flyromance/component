@@ -7,6 +7,8 @@ var jsEntrys = $util.getEntry('js');
 // var htmlEntrys = $util.getEntry('html');
 var htmlEntryPlugins = $util.getHtmlPlugins(HtmlWebpackPlugin);
 
+var ejs = require('ejs');
+
 // console.log(jsEntrys, htmlEntryPlugins);
 
 module.exports = {
@@ -64,7 +66,8 @@ module.exports = {
         open: true,
         setup: function (app) {
             app.set('views', path.resolve(__dirname, './example'));
-            // app.engine('html', hbs.__express);
+            // app.engine('html', ejs.__express);
+            // app.set('view engine', 'html');
             app.set('view engine', 'ejs');
 
             var reg = /^\/([^\/]*)?(\.html)?$/;
