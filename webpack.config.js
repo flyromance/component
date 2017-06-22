@@ -84,7 +84,7 @@ module.exports = {
         },
         proxy: {
             '/api/*': {
-                // 当前devserver去请求127.0.0.1:7788
+                // 当前devserver去请求127.0.0.1:7788 
                 // 前端不存在跨域
                 target: 'http://127.0.0.1:7788',
                 // pathRewrite: { '^/api': '/campaign_huggies/t3store_freeuse/admin' },
