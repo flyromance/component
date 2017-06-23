@@ -4,58 +4,86 @@ var HtmlWebpackPlugin = require('html-webpack-plugin');
 
 var $util = require('./bin/util.js');
 var jsEntrys = $util.getEntry('js');
+
 // var htmlEntrys = $util.getEntry('html');
-var htmlEntryPlugins = $util.getHtmlPlugins(HtmlWebpackPlugin);
-
-var ejs = require('ejs');
-
+// var htmlEntryPlugins = $util.getHtmlPlugins(HtmlWebpackPlugin);
 // console.log(jsEntrys, htmlEntryPlugins);
 
+var plugins = [
+    new webpack.optimize.CommonsChunkPlugin({
+        name: 'common',
+        minChunks: 4
+    })
+];
+
+if (process.env.NODE_ENV == 'production') {
+    plugins.concat([
+        // webpack编译时遇到process.env.NODE_ENV, 就把它替换为production
+        new webpack.DefinePlugin({
+            'process.env': {
+                NODE_ENV: '"production"'
+            }
+        }),
+
+        // 压缩js
+        new webpack.optimize.UglifyJsPlugin({
+            sourceMap: true,
+            compress: {
+                screw_ie8: false, //关闭忽略对IE8的支持
+                warnings: false
+            }
+        })
+    ]);
+}
+
 module.exports = {
-    entry: jsEntrys,
+    entry: Object.assign({
+        'common': './src/common.js'
+    }, jsEntrys),
     output: {
         path: path.resolve(__dirname, './dist'), // 2版本必须用绝对路径
         filename: '[name].js',
         // publicPath: '',
-        // library: '[name]',
-        // libraryTarget: "amd"
+        library: '[name]',
+        libraryTarget: "amd" //cmd umd window global
     },
     module: {
         rules: [{
-            test: /\.jsx?$/,
-            exclude: /node_modules/,
-            loader: 'babel-loader', // 必须用loader，不能简写必须加loader后缀，多个用数组
-            options: { // 必须用options配置loader参数
-                presets: ['es2015']
-            }
-        }, {
-            test: /\.hbs$/,
-            exclude: /node_modules/,
-            loader: 'handlebars-loader',
-            options: {
+                test: /\.jsx?$/,
+                exclude: /node_modules/,
+                loader: 'babel-loader', // 必须用loader，不能简写必须加loader后缀，多个用数组
+                options: { // 必须用options配置loader参数
+                    presets: ['es2015']
+                }
+            }, {
+                test: /\.hbs$/,
+                exclude: /node_modules/,
+                loader: 'handlebars-loader',
+                options: {
 
+                }
+            },
+            // {
+            //     test: /\.html$/,
+            //     loader: 'ejs-loader'
+            // },
+            {
+                test: /\.css$/,
+                exclude: /node_modules/,
+                loader: ['style-loader', 'css-loader']
+            }, {
+                test: /\.(png|jpg|gif)$/i,
+                exclude: /node_modules/,
+                loader: 'url-loader',
+                options: {
+                    limit: 2000,
+                    name: '[name]-[hash].[ext]'
+                }
             }
-        },
-        // {
-        //     test: /\.html$/,
-        //     loader: 'ejs-loader'
-        // },
-        {
-            test: /\.css$/,
-            exclude: /node_modules/,
-            loader: ['style-loader', 'css-loader']
-        }, {
-            test: /\.(png|jpg|gif)$/i,
-            exclude: /node_modules/,
-            loader: 'url-loader',
-            options: {
-                limit: 2000,
-                name: '[name]-[hash].[ext]'
-            }
-        }]
+        ]
     },
 
-    // plugins: [].concat(htmlEntryPlugins),
+    plugins: plugins,
 
     devServer: {
         historyApiFallback: true,
@@ -65,7 +93,7 @@ module.exports = {
         port: 8002,
         open: true,
         setup: function (app) {
-            app.set('views', path.resolve(__dirname, './example'));
+            app.set('views', path.resolve(__dirname, './view'));
             // app.engine('html', ejs.__express);
             // app.set('view engine', 'html');
             app.set('view engine', 'ejs');
@@ -94,6 +122,10 @@ module.exports = {
                 changeOrigin: true
             }
         }
+    },
+    externals: {
+        // webpack编译时把 var $ = require('jquery') 转为 var $ = window.jQuery;
+        'jquery': 'window.jQuery'
     }
 
 }
