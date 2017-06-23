@@ -17,6 +17,7 @@ var plugins = [
 ];
 
 if (process.env.NODE_ENV == 'production') {
+    console.log(123);
     plugins.concat([
         // webpack编译时遇到process.env.NODE_ENV, 就把它替换为production
         new webpack.DefinePlugin({
