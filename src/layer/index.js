@@ -21,8 +21,8 @@
 //     }
 // });
 
-var inherit = require('./inherit');
-var Widget = require('./widget');
+var inherit = require('./script/inherit');
+var Widget = require('./script/widget');
 
 
 require('./style/base.css');

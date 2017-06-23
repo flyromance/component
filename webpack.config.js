@@ -45,6 +45,7 @@ module.exports = {
         path: path.resolve(__dirname, './dist'), // 2版本必须用绝对路径
         filename: '[name].js',
         // publicPath: '',
+        chunkFilename: '[name].js',
         library: '[name]',
         libraryTarget: "amd" //cmd umd window global
     },
