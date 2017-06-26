@@ -16,6 +16,7 @@
 
 <script type="text/javascript">
     require(['common', 'layer/index'], function (Layer) {
+        var layer = null;
         $('#btn').click(function (e) {
             if (layer) {
                 layer.show();

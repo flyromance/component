@@ -7,8 +7,8 @@ var webpack = require('webpack');
 var gulpWebpack = require('gulp-webpack');
 var webpackConfig = require('./webpack.config.js');
 
-var qcdn = require('@q/qcdn');
-var sftp = require('gulp-sftp');
+// var qcdn = require('@q/qcdn');
+// var sftp = require('gulp-sftp');
 
 // 清除dist文件夹
 gulp.task('clean', function () {
