@@ -852,10 +852,10 @@ var Zepto = (function() {
   }
 
   // for now
-  $.fn.detach = $.fn.remove
+  $.fn.detach = $.fn.remove;
 
   // Generate the `width` and `height` functions
-  ;['width', 'height'].forEach(function(dimension){
+  ['width', 'height'].forEach(function(dimension){
     var dimensionProperty =
       dimension.replace(/./, function(m){ return m[0].toUpperCase() })
 
@@ -948,10 +948,10 @@ var Zepto = (function() {
   return $
 })();
 
-window.Zepto = Zepto
-window.$ === undefined && (window.$ = Zepto)
+window.Zepto = Zepto;
+window.$ === undefined && (window.$ = Zepto);
 
-;(function($){
+(function($){
   var _zid = 1, undefined,
       slice = Array.prototype.slice,
       isFunction = $.isFunction,
@@ -1220,9 +1220,9 @@ window.$ === undefined && (window.$ = Zepto)
     event.initEvent(type, bubbles, true)
     return compatible(event)
   }
-})(Zepto)
+})(Zepto);
 
-;(function($){
+(function($){
   var jsonpID = +new Date(),
       document = window.document,
       key,
@@ -1600,9 +1600,9 @@ window.$ === undefined && (window.$ = Zepto)
     serialize(params, obj, traditional)
     return params.join('&').replace(/%20/g, '+')
   }
-})(Zepto)
+})(Zepto);
 
-;(function($){
+(function($){
   $.fn.serializeArray = function() {
     var name, type, result = [],
       add = function(value) {
@@ -1636,9 +1636,9 @@ window.$ === undefined && (window.$ = Zepto)
     }
     return this
   }
-})(Zepto)
+})(Zepto);
 
-;(function(){
+(function(){
   // getComputedStyle shouldn't freak out when called
   // without a valid element as argument
   try {
@@ -1653,6 +1653,6 @@ window.$ === undefined && (window.$ = Zepto)
       }
     }
   }
-})()
-  return Zepto
+})();
+  return Zepto;
 }))
