@@ -16,7 +16,7 @@ var Zepto = (function() {
     elementDisplay = {}, 
     classCache = {},
     cssNumber = { 
-      'column-count': 1, 'columns': 1, 'font-weight': 1, 'line-height': 1,'opacity': 1, 'z-index': 1, 'zoom': 1 
+      'column-count': 1, 'columns': 1, 'font-weight': 1, 'line-height': 1, 'opacity': 1, 'z-index': 1, 'zoom': 1 
     },
     fragmentRE = /^\s*<(\w+|!)[^>]*>/,
     singleTagRE = /^<(\w+)\s*\/?>(?:<\/\1>|)$/,
@@ -32,8 +32,11 @@ var Zepto = (function() {
     tableRow = document.createElement('tr'),
     containers = {
       'tr': document.createElement('tbody'),
-      'tbody': table, 'thead': table, 'tfoot': table,
-      'td': tableRow, 'th': tableRow,
+      'tbody': table, 
+      'thead': table, 
+      'tfoot': table,
+      'td': tableRow, 
+      'th': tableRow,
       '*': document.createElement('div')
     },
     readyRE = /complete|loaded|interactive/,
