@@ -17,7 +17,7 @@ gulp.task('clean', function () {
 
 // 生成核心依赖包
 gulp.task('concat', function () {
-    return gulp.src(['public/script/core/jquery-1.11.3.js',
+    return gulp.src(['public/script/core/jquery-1.12.4.js',
             'public/script/core/require-2.3.3.js',
             'public/script/core/require.config.js'
         ])
