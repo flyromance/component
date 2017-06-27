@@ -569,7 +569,7 @@
 
                 /***/
             },
-/* 6 */
+/* 6 defaults */
 /***/ function (module, exports, __webpack_require__) {
 
                 'use strict';
@@ -668,7 +668,7 @@
 
                 /***/
             },
-/* 7 */
+/* 7 normalizeHeaderName */
 /***/ function (module, exports, __webpack_require__) {
 
                 'use strict';
@@ -687,7 +687,7 @@
 
                 /***/
             },
-/* 8 */
+/* 8 xhrAdapter */
 /***/ function (module, exports, __webpack_require__) {
 
                 'use strict';
@@ -874,7 +874,7 @@
 
                 /***/
             },
-/* 9 */
+/* 9 settle */
 /***/ function (module, exports, __webpack_require__) {
 
                 'use strict';
@@ -907,7 +907,7 @@
 
                 /***/
             },
-/* 10 */
+/* 10 createError */
 /***/ function (module, exports, __webpack_require__) {
 
                 'use strict';
@@ -932,7 +932,7 @@
 
                 /***/
             },
-/* 11 */
+/* 11 enhanceError */
 /***/ function (module, exports) {
 
                 'use strict';
@@ -960,7 +960,7 @@
 
                 /***/
             },
-/* 12 */
+/* 12 buildURL */
 /***/ function (module, exports, __webpack_require__) {
 
                 'use strict';
@@ -1035,7 +1035,7 @@
 
                 /***/
             },
-/* 13 */
+/* 13 parseHeaders */
 /***/ function (module, exports, __webpack_require__) {
 
                 'use strict';
@@ -1079,7 +1079,7 @@
 
                 /***/
             },
-/* 14 */
+/* 14 isURLSameOrigin */
 /***/ function (module, exports, __webpack_require__) {
 
                 'use strict';
@@ -1257,7 +1257,7 @@
 
                 /***/
             },
-/* 17 */
+/* 17 InterceptorManager */
 /***/ function (module, exports, __webpack_require__) {
 
                 'use strict';
@@ -1316,7 +1316,7 @@
 
                 /***/
             },
-/* 18 */
+/* 18 dispatchRequest */
 /***/ function (module, exports, __webpack_require__) {
 
                 'use strict';
@@ -1441,7 +1441,7 @@
 
                 /***/
             },
-/* 21 */
+/* 21 isAbsoluteURL */
 /***/ function (module, exports) {
 
                 'use strict';
@@ -1462,7 +1462,7 @@
 
                 /***/
             },
-/* 22 */
+/* 22 combineURLs */
 /***/ function (module, exports) {
 
                 'use strict';
@@ -1483,7 +1483,7 @@
 
                 /***/
             },
-/* 23 */
+/* 23 Cancel */
 /***/ function (module, exports) {
 
                 'use strict';
@@ -1509,7 +1509,7 @@
 
                 /***/
             },
-/* 24 */
+/* 24 CancelToken */
 /***/ function (module, exports, __webpack_require__) {
 
                 'use strict';
@@ -1573,7 +1573,7 @@
 
                 /***/
             },
-/* 25 */
+/* 25 spread */
 /***/ function (module, exports) {
 
                 'use strict';
