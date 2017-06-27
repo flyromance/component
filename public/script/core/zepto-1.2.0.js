@@ -1,15 +1,23 @@
 /* Zepto v1.2.0 - zepto event ajax form ie - zeptojs.com/license */
 (function(global, factory) {
-  if (typeof define === 'function' && define.amd)
+  if (typeof define === 'function' && define.amd) {
     define(function() { return factory(global) })
-  else
+  } else {
     factory(global)
+  }
 }(this, function(window) {
-  var Zepto = (function() {
-  var undefined, key, $, classList, emptyArray = [], concat = emptyArray.concat, filter = emptyArray.filter, slice = emptyArray.slice,
+var Zepto = (function() {
+  var undefined, key, $, classList, 
+    emptyArray = [], 
+    concat = emptyArray.concat, 
+    filter = emptyArray.filter, 
+    slice = emptyArray.slice,
     document = window.document,
-    elementDisplay = {}, classCache = {},
-    cssNumber = { 'column-count': 1, 'columns': 1, 'font-weight': 1, 'line-height': 1,'opacity': 1, 'z-index': 1, 'zoom': 1 },
+    elementDisplay = {}, 
+    classCache = {},
+    cssNumber = { 
+      'column-count': 1, 'columns': 1, 'font-weight': 1, 'line-height': 1,'opacity': 1, 'z-index': 1, 'zoom': 1 
+    },
     fragmentRE = /^\s*<(\w+|!)[^>]*>/,
     singleTagRE = /^<(\w+)\s*\/?>(?:<\/\1>|)$/,
     tagExpanderRE = /<(?!area|br|col|embed|hr|img|input|link|meta|param)(([\w:]+)[^>]*)\/>/ig,
@@ -49,8 +57,7 @@
       'frameborder': 'frameBorder',
       'contenteditable': 'contentEditable'
     },
-    isArray = Array.isArray ||
-      function(object){ return object instanceof Array }
+    isArray = Array.isArray || function(object){ return object instanceof Array }
 
   zepto.matches = function(element, selector) {
     if (!selector || !element || element.nodeType !== 1) return false
@@ -936,7 +943,7 @@
   $.zepto = zepto
 
   return $
-})()
+})();
 
 window.Zepto = Zepto
 window.$ === undefined && (window.$ = Zepto)
@@ -1210,7 +1217,6 @@ window.$ === undefined && (window.$ = Zepto)
     event.initEvent(type, bubbles, true)
     return compatible(event)
   }
-
 })(Zepto)
 
 ;(function($){
@@ -1627,7 +1633,6 @@ window.$ === undefined && (window.$ = Zepto)
     }
     return this
   }
-
 })(Zepto)
 
 ;(function(){
