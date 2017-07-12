@@ -74,7 +74,8 @@
             script = scripts[scripts.length - 1],
             src = script.src,
             reg = /(?:\?|&)(.*?)=(.*?)(?=&|$)/g,
-            temp, res = {};
+            res = {},
+            temp;
         while ((temp = reg.exec(src)) != null) res[temp[1]] = decodeURIComponent(temp[2]);
         return { "src": src, "params": res };
     };
@@ -91,12 +92,10 @@
         return null;
     };
 
-
-
-
+    /**
+     * 配置config
+     */
     try {
-
-
         var CONFIG_PAGE = namespace("App.config.requirejs");
         var CONFIG_TEST = { baseUrl: "http://localhost:8002/dist/" };
         var query = getCurrentScript();
@@ -104,10 +103,9 @@
         var regs = query.src.match(/^(http:\/\/[^\/]*\/)([^\/]*)\/\S*$/);
         var version = query.params.version || regs[2] || DEFAULT_VERSION;
 
-
-        var config_current = mode ? CONFIG_TEST : extend({ baseUrl: regs[1] + (query.params.version || regs[2]) + '/' },
-            CONFIG_PAGE
-        );
+        var config_current = mode ? 
+            CONFIG_TEST : 
+            extend({ baseUrl: regs[1] + version + '/' }, CONFIG_PAGE);
 
 
         /**
@@ -116,27 +114,24 @@
         requirejs.config(config_current);
 
 
-
         /**
-         *	@desp 默认依赖common.js公共包，有webpack生成
+         *	@desp 默认依赖common.js公共包，由webpack生成
          */
         var myrequire = require;
         require = function () {
             var args = arguments;
-            myrequire(["feb/common"], function (common) {
-                common.init({ "publicPath": config_current.baseUrl });
-                common.each = each;
-                common.extend = extend;
-                common.namespace = namespace;
+            myrequire(["common"], function (common) {
+                // common.init({ "publicPath": config_current.baseUrl });
+                // common.each = each;
+                // common.extend = extend;
+                // common.namespace = namespace;
                 myrequire.apply(window, args);
                 require = myrequire;
             });
         };
 
-
     } catch (ex) {
         console.log("error_require_config: " + ex);
     }
-
 
 }());

@@ -1,20 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <title>Document</title>
     <% include ./include/head.ejs %>
 </head>
-<body>
-    
-    <script src="/dist/pagination/index.js"></script>
 
+<body>
+    <script src="/dist/pagination/index.js"></script>
     <script>
     //测试数据
-    var data = ['北京','上海','广州','深圳','杭州',
-        '长沙','合肥','宁夏','成都','西安','南昌','上饶','沈阳','济南','厦门',
-        '福州','九江','宜春','赣州','宁波','绍兴','无锡','苏州','徐州','东莞','佛山','中山','成都','武汉',
-        '青岛','天津','重庆','南京','九江','香港','澳门','台北'
+    var data = ['北京', '上海', '广州', '深圳', '杭州',
+        '长沙', '合肥', '宁夏', '成都', '西安', '南昌', '上饶', '沈阳', '济南', '厦门',
+        '福州', '九江', '宜春', '赣州', '宁波', '绍兴', '无锡', '苏州', '徐州', '东莞', '佛山', '中山', '成都', '武汉',
+        '青岛', '天津', '重庆', '南京', '九江', '香港', '澳门', '台北'
     ];
 
     var nums = 5; //每页出现的数量
@@ -54,11 +54,33 @@
         },
         // groups: 5, // 默认为5   
     })
-    </script>    
-    
-
+    </script>
     <script type="text/javascript">
-
+    // var pagination = new Pagination({
+    //     page: 3,
+    //     pages: 6,
+    //     group: 5,
+    //     container: '.j-pagination-wraper',
+    //     className: {
+    //         item: '.pagination-item'
+    //     },
+    //     render: template.compile($('#j-tpl-pagination').html()), // 渲染函数
+    //     customEvents: {
+    //         afterSwitch: function(page, pages) {
+    //             return;
+    //             // 跳页面 或者 ajax请求
+    //             var search = window.location.search;
+    //             if (search.match(/[?&]page=/)) {
+    //                 window.location.search = search.replace(/([\?&=])page=([^&#\?]*)/, function($0, $1, $2) {
+    //                     return $1 + 'page=' + page;
+    //                 });
+    //             } else {
+    //                 window.location.search = search ? search + '&page=' + page : '?page=' + page;
+    //             }
+    //         }
+    //     }
+    // });
     </script>
 </body>
+
 </html>

@@ -1,21 +1,92 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <title>Document</title>
     <% include ./include/head.ejs %>
+        <style>
+        body {
+            margin: 0;
+        }
+        
+        #div1 {
+            background-color: red;
+            width: 100px;
+            height: 100px;
+            /*margin: 20px;*/
+            /*padding: 20px;*/
+            /*border: 20px solid blue;*/
+        }
+        
+        #div2 {
+            background-color: red;
+            width: 100px;
+            height: 100px;
+            position: absolute;
+            left: 10px;
+            top: 120px;
+        }
+        
+        .drag-bar {
+            width: 300px;
+            height: 30px;
+            background-color: #ddd;
+            position: relative;
+            margin: 200px auto;
+        }
+        
+        .drag-over {
+            width: 100px;
+            height: 30px;
+            background-color: #aaa;
+        }
+        
+        .btn {
+            position: absolute;
+            z-index: 2;
+            height: 50px;
+            width: 20px;
+            top: 50%;
+            margin-top: -25px;
+            background-color: red;
+            left: 100px;
+        }
+        
+        .left,
+        .right {
+            position: absolute;
+            height: 30px;
+            width: 30px;
+            top: 0;
+            text-align: center;
+            line-height: 30px;
+        }
+        
+        .left {
+            left: -40px;
+        }
+        
+        .right {
+            right: -40px;
+        }
+        </style>
 </head>
+
 <body>
     <% include ./include/header.ejs %>
-    
-    
-
-    <% include ./include/footer.ejs %>
-    
-    
-
-    <script type="text/javascript">
-
-    </script>
+        <div id="div1" class="draggable">div</div>
+        <div id="div2" class="draggable">div</div>
+        <div id="show">0</div>
+        <div class="drag-bar" id="drag-bar">
+            <div class="drag-over" id="drag-over"></div>
+            <span class="btn" id="drag-btn"></span>
+            <span class="left">0</span>
+            <span class="right">10</span>
+        </div>
+        <% include ./include/footer.ejs %>
+            <script type="text/javascript">
+            </script>
 </body>
+
 </html>
