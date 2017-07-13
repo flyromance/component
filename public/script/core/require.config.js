@@ -22,7 +22,7 @@
             }
         } else {
             for (var key in obj) {
-                if (_.has(obj, key)) {
+                if (obj.hasOwnProperty(key)) {
                     iterator.call(context, key, obj[key], obj);
                 }
             }
@@ -133,5 +133,5 @@
     } catch (ex) {
         console.log("error_require_config: " + ex);
     }
-
+    
 }());

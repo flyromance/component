@@ -10,26 +10,23 @@
 <body>
     <% include ./include/header.ejs %>
 
-    <div class="ui-datepick-wrap">
-        <div class="ui-datepick">
-            <div class="ui-datepick-header">
-                <span class='ui-datepick-btn ui-datepick-btn-left'>&lt;</span>
-                <span class='ui-datepick-btn ui-datepick-btn-right'>&gt;</span>
-                <h4 class='ui-datepick-title'></h4>
-            </div>
-            <div class="ui-datepick-body">
+    <input id="input" type='text' placeholder="select your date" />
 
-            </div>
-        </div>
+    <div class="ui-datepick-wrap">
+        
     </div>
 
     <% include ./include/footer.ejs %>
 
-    <script src="/dist/datepick/index.js"></script>
-    
     <script>
-        
+    require(['datepick/index'], function (Datepick) {
+
+        var datepick = new Datepick({
+            container: '.ui-datepick-wrap'
+        });
+    });
     </script>
+    
 </body>
 
 </html>

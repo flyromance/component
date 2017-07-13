@@ -1,18 +1,7 @@
-<table>
-    <thead>
-        <tr>
-        {{#each day}}
-            {{th}} {{this}} {{/th}}
+{{#each list}}
+    <tr>
+        {{#each this}}
+            <td>{{this.date}}</td>
         {{/each}}
-        </tr>
-    </thead>
-    <tbody>
-        {{#each days}}
-            <tr>
-                {{#each this}}
-                    {{td}} {{this}} {{/td}}
-                {{/each}}
-            </tr>
-        {{/each}}
-    </tbody>
-</table> 
+    </tr>
+{{/each}}

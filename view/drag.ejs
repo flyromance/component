@@ -8,24 +8,31 @@
         <style>
         body {
             margin: 0;
+            overflow-x: hidden;
         }
         
-        #div1 {
-            background-color: red;
-            width: 100px;
-            height: 100px;
-            /*margin: 20px;*/
-            /*padding: 20px;*/
-            /*border: 20px solid blue;*/
-        }
-        
-        #div2 {
+        .drag-box {
             background-color: red;
             width: 100px;
             height: 100px;
             position: absolute;
+        }
+        
+        #div1 {
             left: 10px;
-            top: 120px;
+            top: 10px;
+            margin: 20px;
+            padding: 20px;
+            border: 10px solid green;
+        }
+        
+        #div2 {
+            left: 400px;
+            top: 10px;
+        }
+
+        #div3 {
+            position: relative;
         }
         
         .drag-bar {
@@ -36,7 +43,7 @@
             margin: 200px auto;
         }
         
-        .drag-over {
+        .drag-barover {
             width: 100px;
             height: 30px;
             background-color: #aaa;
@@ -70,23 +77,45 @@
         .right {
             right: -40px;
         }
+        #show {
+            position: absolute;
+            left: -300px;
+            top: 0px;
+        }
         </style>
 </head>
 
 <body>
-    <% include ./include/header.ejs %>
-        <div id="div1" class="draggable">div</div>
-        <div id="div2" class="draggable">div</div>
-        <div id="show">0</div>
+    <div id="div1" class="draggable drag-box">div</div>
+    <div id="div2" class="draggable drag-box">div</div>
+    <div id="div3" class="">div</div>
+    <div class="dragbar-wraper">
         <div class="drag-bar" id="drag-bar">
-            <div class="drag-over" id="drag-over"></div>
+            <div class="drag-barover" id="drag-barover"></div>
             <span class="btn" id="drag-btn"></span>
             <span class="left">0</span>
-            <span class="right">10</span>
+            <span class="right">100</span>
+            <div id="show">0</div>
         </div>
-        <% include ./include/footer.ejs %>
-            <script type="text/javascript">
-            </script>
+    </div>
+    <script type="text/javascript">
+    require(['drag/dragbar', 'drag/drag'], function(Dragbar, Drag) {
+        var dragbar = new Dragbar({
+            bar: 'drag-bar',
+            barOver: 'drag-barover',
+            btn: 'drag-btn',
+            show: 'show',
+            min: 50,
+            max: 100
+        });
+        dragbar.setPos(10);
+
+        // 
+        // Drag.drag.enable();
+
+        new Drag('div2');
+    });
+    </script>
 </body>
 
 </html>
