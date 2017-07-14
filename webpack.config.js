@@ -17,7 +17,6 @@ var plugins = [
 ];
 
 if (process.env.NODE_ENV == 'production') {
-    console.log(123);
     plugins.concat([
         // webpack编译时遇到process.env.NODE_ENV, 就把它替换为production
         new webpack.DefinePlugin({
@@ -51,38 +50,40 @@ module.exports = {
     },
     module: {
         rules: [{
-                test: /\.jsx?$/,
-                exclude: /node_modules/,
-                loader: 'babel-loader', // 必须用loader，不能简写必须加loader后缀，多个用数组
-                options: { // 必须用options配置loader参数
-                    presets: ['es2015']
-                }
-            }, {
-                test: /\.hbs$/,
-                exclude: /node_modules/,
-                loader: 'handlebars-loader',
-                options: {
-
-                }
-            },
-            // {
-            //     test: /\.html$/,
-            //     loader: 'ejs-loader'
-            // },
-            {
-                test: /\.css$/,
-                exclude: /node_modules/,
-                loader: ['style-loader', 'css-loader']
-            }, {
-                test: /\.(png|jpg|gif)$/i,
-                exclude: /node_modules/,
-                loader: 'url-loader',
-                options: {
-                    limit: 2000,
-                    name: '[name]-[hash].[ext]'
-                }
+            test: /\.jsx?$/,
+            exclude: /node_modules/,
+            loader: 'babel-loader', // 必须用loader，不能简写必须加loader后缀，多个用数组
+            options: { // 必须用options配置loader参数
+                presets: ['es2015']
             }
-        ]
+        }, {
+            test: /\.hbs$/,
+            exclude: /node_modules/,
+            loader: 'handlebars-loader',
+            options: {
+
+            }
+        }, {
+            test: /\.art/,
+            exclude: /node_modules/,
+            loader: 'art-template-loader',
+        }, {
+            test: /\.html$/,
+            exclude: /node_modules/.
+            loader: 'html-loader'
+        }, {
+            test: /\.css$/,
+            exclude: /node_modules/,
+            loader: ['style-loader', 'css-loader']
+        }, {
+            test: /\.(png|jpg|gif)$/i,
+            exclude: /node_modules/,
+            loader: 'url-loader',
+            options: {
+                limit: 2000,
+                name: '[name]-[hash].[ext]'
+            }
+        }]
     },
 
     plugins: plugins,
