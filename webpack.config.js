@@ -67,6 +67,9 @@ module.exports = {
             test: /\.art/,
             exclude: /node_modules/,
             loader: 'art-template-loader',
+            options: {
+                imports: path.resolve(__dirname, './bin/helpers/runtime.js')
+            }
         }, {
             test: /\.html$/,
             exclude: /node_modules/.
