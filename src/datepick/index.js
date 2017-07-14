@@ -17,7 +17,7 @@ class Datepick {
         var conf = that.conf = $.extend({}, conf);
 
         that.handleDate();
-        
+
         that.$container = $(conf.container);
         that.render();
 
@@ -27,7 +27,7 @@ class Datepick {
         that.bindEvent();
     }
 
-    handleDate(month) {
+    handleDate() {
         var that = this;
 
         var oDate = new Date();
@@ -43,9 +43,9 @@ class Datepick {
             month = Math.min(12, month);
         }
 
-        if (!year || typeof year !== 'nubmer') {
+        if (!year || typeof year !== 'number') {
             year = oDate.getFullYear();
-        } 
+        }
 
         if (!date || typeof date !== 'number') {
             date = oDate.getDate();
@@ -69,6 +69,15 @@ class Datepick {
         }
     }
 
+    set(month, year) {
+        var that = this;
+        that.month = typeof month === 'number' ? month : 1;
+        that.year = typeof year === 'number' ? year : 2017;
+        month = Math.max(1, month);
+        month = Math.min(12, month);
+        that.switch(month, year);
+    }
+
     switch (month, year) {
         var that = this;
 
@@ -86,6 +95,8 @@ class Datepick {
     }
 
     getData(month, year) {
+        var that = this;
+
         var ret = [];
 
         var date = new Date();
@@ -128,13 +139,15 @@ class Datepick {
                 }
             }
 
-            item ={
+            item = {
                 year: _year,
-                // thisYear: year,
+                showYear: year, // 面板上的年份
                 month: _month,
-                thisMonth: month, // 面板上的月份
+                showMonth: month, // 面板上的月份
                 date: _date,
-                day: (i - 1) % 7 === 0 ? 7 : (i - 1) % 7
+                day: (i - 1) % 7 === 0 ? 7 : (i - 1) % 7,
+                notThisMonth: _month !== month,
+                // cur: _date === that.date
             };
 
             arr.push(item);
@@ -177,9 +190,18 @@ class Datepick {
             that.switch(that.month, that.year);
         });
 
-        that.$container.on('click', 'tr td', function (e) {
+        that.$container.on('click', 'tbody td:not(.disabled)', function (e) {
+            var $this = $(this);
+            that.$tbody.find('td').removeClass('active');
+            $this.addClass('active');
+            that.date = parseInt($this.data('date'));
+            that.day = parseInt($this.data('day'));
 
+            that.$event.trigger('afterSelect', that.getDate());
         });
+
+        that.$event = $({});
+        that.$event.on('afterSelect', that.conf.afterSelect);
     }
 
     getDate() {
@@ -191,6 +213,12 @@ class Datepick {
             date: that.date,
             day: that.day
         }
+    }
+
+    getFormatDate() {
+        var that = this;
+        
+        return that.year + '-' + that.month + '-' + that.date;
     }
 }
 

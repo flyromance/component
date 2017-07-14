@@ -1,7 +1,8 @@
 {{#each list}}
     <tr>
         {{#each this}}
-            <td>{{this.date}}</td>
+            <td class="{{#if this.notThisMonth}}disabled{{/if}}{{#if this.cur}} active{{/if}}" 
+                data-year={{this.year}} data-month={{this.month}} data-date={{this.date}} data-day={{this.day}}>{{this.date}}</td>
         {{/each}}
     </tr>
 {{/each}}

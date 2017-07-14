@@ -5,25 +5,63 @@
     <meta charset="UTF-8">
     <title>Document</title>
     <% include ./include/head.ejs %>
+    <style>
+        .datepick-wrap {
+            position: relative;
+        }
+
+        .datepick-wrap.open .ui-datepick-wrap {
+            display: block;
+        }
+
+        .ui-datepick-wrap {
+            display: none;
+            position: absolute;
+            top: 20px;
+            left: 0px;
+        }
+    </style>
 </head>
 
 <body>
-    <% include ./include/header.ejs %>
+    
+    <div class="datepick-wrap">
+        <input id="input" type='text' placeholder="select your date" />
 
-    <input id="input" type='text' placeholder="select your date" />
-
-    <div class="ui-datepick-wrap">
-        
+        <div class="ui-datepick-wrap">
+            
+        </div>
     </div>
-
-    <% include ./include/footer.ejs %>
 
     <script>
     require(['datepick/index'], function (Datepick) {
 
-        var datepick = new Datepick({
-            container: '.ui-datepick-wrap'
+        // 
+        $('#input').focus(function (e) {
+            // body...
+            $(this).parent().addClass('open');
         });
+
+        // e.target 父元素找不到datepick-wrap就删掉open类
+        $(document).click(function (e) {
+            var $target = $(e.target);
+            if (!$target.parents().find('.datepick-wrap').length) {
+                $('.datepick-wrap').removeClass('open');
+            }
+        });
+
+        var datepick = new Datepick({
+            container: '.ui-datepick-wrap',
+            date: 9,
+            year: 2019,
+            month: 10,
+            afterSelect: function (e) {
+                $('#input').val(datepick.getFormatDate());
+                $('.datepick-wrap').removeClass('open');
+            }
+        });
+
+        window.datepick = datepick;
     });
     </script>
     

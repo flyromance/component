@@ -1,7 +1,9 @@
-
+* {
+    margin: 0;
+    padding: 0;
+}
 .ui-datepick-wrap {
     width: 400px;
-    margin: 100px auto;
 }
 
 .ui-datepick {
@@ -61,6 +63,11 @@
     border: 1px solid #f2f2f2;
 }
 
-.ui-datepick-body td.gray {
-    color: #a1a1a1;
+.ui-datepick-body td.active {
+    background-color: #888;
+}
+
+.ui-datepick-body td.disabled {
+    cursor: not-allowed;
+    color: #999;
 }
