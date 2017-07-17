@@ -1,0 +1,15 @@
+<div class="dialog-box" data-index="{{index}}">
+	<div class="dialog-header">
+		<div class="dialog-title">
+			{{#title}}
+		</div>
+		<span class="dialog-close">&#215;</span>
+	</div>
+	<div class="dialog-body">
+		{{#content}}
+	</div>
+	<div class="dialog-footer">
+
+	</div>
+	
+</div>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <% include ./include/head.ejs %>
+</head>
+<body>
+	<p><button id='btn1'>show</button></p>
+	<p><button id='btn2'>close</button></p>
+    
+    
+
+    <script type="text/javascript">
+    require(['dialog/index'], function (dialog) {
+    	var d = dialog({
+    		title: 'this is a title',
+    		content: '<input autofocus/>',
+    		animate: 'fade',
+    		quickClose: true
+    	});
+
+    	$('#btn1').click(function (e) {
+    		d.showModal();
+    	});
+    	$('#btn2').click(function (e) {
+    		d.close();
+    	});
+    })
+    </script>
+</body>
+</html>
