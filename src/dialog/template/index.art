@@ -9,7 +9,20 @@
 		{{#content}}
 	</div>
 	<div class="dialog-footer">
+		<div class="dialog-status">
+			{{if status}}
 
+			{{/if}}
+		</div>
+		{{if btnOk || btnCancel}}
+			<div class="dialog-btn-wrap">
+				{{if btnOk}}
+					<button class="dialog-btn dialog-btn-ok">{{okValue}}</button>
+				{{/if}}
+				{{if btnCancel}}
+					<button class="dialog-btn dialog-btn-cancel">{{cancelValue}}</button>
+				{{/if}}
+			</div>
+		{{/if}}
 	</div>
-	
 </div>

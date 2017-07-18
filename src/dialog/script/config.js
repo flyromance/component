@@ -25,6 +25,12 @@ module.exports = {
 
 	h: '',
 
+	ok: null,
+
+	cancel: null,
+
+	autoShow: false,
+
 	// 内容与边界的距离
 	padding: '',
 

@@ -4,27 +4,51 @@
     <meta charset="UTF-8">
     <title>Document</title>
     <% include ./include/head.ejs %>
+    <style>
+		body {
+			min-height: 3000px;
+		}
+    </style>
 </head>
 <body>
-	<p><button id='btn1'>show</button></p>
-	<p><button id='btn2'>close</button></p>
-    
-    
+	<div style="position: absolute; top: 400px;">
+		<p><button id='btn1'>show</button></p>
+		<p><button id='btn2'>close</button></p>
+	</div>
 
     <script type="text/javascript">
     require(['dialog/index'], function (dialog) {
-    	var d = dialog({
-    		title: 'this is a title',
-    		content: '<input autofocus/>',
-    		animate: 'fade',
-    		quickClose: true
-    	});
+
+		var d = dialog({
+	    		title: 'this is a title',
+	    		content: '<input autofocus/><div>1232131</div>',
+	    		animate: 'fade',
+	    		fixed: true,
+	    		quickClose: true,
+	    		padding: 20,
+	    		ok: function () {
+	    			this.close()
+	    		},
+	    		cancel: function () {
+	    			this.remove()
+	    		},
+	    		dragable: true
+	    	});
 
     	$('#btn1').click(function (e) {
+
+	    	// d.title();
+	    	// d.content();
+	    	// d.width();
     		d.showModal();
     	});
+
     	$('#btn2').click(function (e) {
-    		d.close();
+    		
+	    	// d.title();
+	    	// d.content();
+	    	// d.width();
+    		d.show();
     	});
     })
     </script>

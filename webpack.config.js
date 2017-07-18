@@ -43,7 +43,7 @@ module.exports = {
     output: {
         path: path.resolve(__dirname, './dist'), // 2版本必须用绝对路径
         filename: '[name].js',
-        // publicPath: '',
+        publicPath: '/dist/',
         chunkFilename: '[name].js',
         library: '[name]',
         libraryTarget: "amd" //cmd umd window global
@@ -79,7 +79,7 @@ module.exports = {
             exclude: /node_modules/,
             loader: ['style-loader', 'css-loader']
         }, {
-            test: /\.(png|jpg|gif)$/i,
+            test: /\.(png|jpg|gif|eot|svg|ttf|woff|woff2)$/i,
             exclude: /node_modules/,
             loader: 'url-loader',
             options: {
