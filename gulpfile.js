@@ -3,7 +3,7 @@ var concat = require("gulp-concat");
 var clean = require("gulp-clean");
 var uglify = require("gulp-uglify");
 var gulpif = require("gulp-if");
-var minimist = require('minimist')
+var minimist = require('minimist');
 
 var webpack = require('webpack');
 var gulpWebpack = require('gulp-webpack');

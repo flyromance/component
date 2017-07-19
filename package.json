@@ -7,7 +7,7 @@
     "lib": "gulp",
     "dev": "webpack-dev-server --colors --profile --hot --inline",
     "webpack:build": "rm -rf ./dist && webpack --progress --colors --display-error-details --display-modules --display-reasons",
-    "gulp:dev": "cross-env NODE_ENV=production gulp dev",
+    "gulp:dev": "cross-env NODE_ENV=development gulp dev",
     "gulp:build": "cross-env NODE_ENV=production gulp build",
     "gulp:release": "gulp release"
   },
