@@ -2,6 +2,8 @@ var gulp = require("gulp");
 var concat = require("gulp-concat");
 var clean = require("gulp-clean");
 var uglify = require("gulp-uglify");
+var gulpif = require("gulp-if");
+var minimist = require('minimist');
 
 var webpack = require('webpack');
 var gulpWebpack = require('gulp-webpack');
@@ -9,6 +11,10 @@ var webpackConfig = require('./webpack.config.js');
 
 // var qcdn = require('@q/qcdn');
 // var sftp = require('gulp-sftp');
+
+// 环境判断
+var isDev = process.env.NODE_ENV === 'production' ? false : true;
+var isPrd = !isDev;
 
 // 清除dist文件夹
 gulp.task('clean', function () {
@@ -22,7 +28,7 @@ gulp.task('concat', function () {
             'public/script/core/require.config.js'
         ])
         .pipe(concat('jquery.require.js'))
-        .pipe(uglify())
+        .pipe(gulpif(isPrd, uglify()))
         .pipe(gulp.dest('./dist'));
 });
 
@@ -64,8 +70,9 @@ gulp.task('sftp', function () {
 // 
 var taskList = ['clean', 'concat', 'webpack'];
 
-gulp.task('build', taskList);
 
-gulp.task('cdn', taskList.concat('qcdn'));
+gulp.task('dev', ['clean', 'concat'])
+
+gulp.task('build', taskList);
 
 gulp.task('release', taskList.concat('qcdn'));

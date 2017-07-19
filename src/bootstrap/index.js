@@ -4,9 +4,12 @@
  * Licensed under the MIT license
  */
 
+require('./style/index.css');
+
 if (typeof jQuery === 'undefined') {
   throw new Error('Bootstrap\'s JavaScript requires jQuery')
 }
+// var jQuery = require('jquery'); // 不能加这句话
 
 +function ($) {
   'use strict';

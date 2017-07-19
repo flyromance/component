@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <% include ./include/head.ejs %>
+</head>
+<body style="padding: 20px;">
+    
+    <div class="glyphicon glyphicon-asterisk"></div>
+    
+    <h1>1、alert</h1>
+    <div class="alert fade in alert-danger" id="alert">
+    	<button type="button" class="close" data-dismiss="alert">&times;</button>
+    	<h4>this is alert</h4>
+    	<p>ddd</p>
+    </div>
+    <button id="btn-close-alert" data-dismiss="alert" data-target="#alert">close alert</button>
+
+	<h1>2、button</h1>
+	<button id="btn" class="btn btn-primary" data-toggle="button">button</button>
+
+    <script type="text/javascript">
+    require(['bootstrap/index'], function (xxx) {
+    	$('#alert')
+    	// .alert() // 不能再执行，连续绑定两次点击事件
+    	.on('close.bs.alert', function () {
+    		console.log(2);
+    	})
+    	.on('closed.bs.alert', function () {
+    		console.log(3);
+    	});
+
+    	$('#btn').click(function () {
+    		var $this = $(this);
+    		// $this.button('loading');
+    		// setTimeout(function() {
+    		// 	$this.button('reset')
+    		// }, 2000);
+    	});
+    });
+    </script>
+</body>
+</html>
