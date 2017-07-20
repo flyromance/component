@@ -2364,6 +2364,7 @@ if (typeof jQuery === 'undefined') {
   // ==============
 
   $(window).on('load', function () {
+
     $('[data-spy="affix"]').each(function () {
       var $spy = $(this)
       var data = $spy.data()
