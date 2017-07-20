@@ -5,40 +5,88 @@
     <title>Document</title>
     <% include ./include/head.ejs %>
 </head>
-<body style="padding: 20px;">
+<body style="padding: 20px; height: 2000px;">
     
     <div class="glyphicon glyphicon-asterisk"></div>
     
     <h1>1、alert</h1>
     <div class="alert fade in alert-danger" id="alert">
-    	<button type="button" class="close" data-dismiss="alert">&times;</button>
-    	<h4>this is alert</h4>
-    	<p>ddd</p>
+        <button type="button" class="close" data-dismiss="alert">&times;</button>
+        <h4>this is alert</h4>
+        <p>ddd</p>
     </div>
     <button id="btn-close-alert" data-dismiss="alert" data-target="#alert">close alert</button>
 
-	<h1>2、button</h1>
-	<button id="btn" class="btn btn-primary" data-toggle="button">button</button>
+    <h1>2、button</h1>
+    <button id="btn" class="btn btn-primary" data-toggle="button">button</button>
+
+    <div data-fan-long="ddd" data-fanlong="ssss" id="data-test" class="s d f" draggable>data-test</div>
+
+    <h1>3、dropdown</h1>
+    
+    <h1>4、tab</h1>
+
+    <h1>5、modal</h1>
+
+    <h1>6、tooltip</h1>
+    <button class="btn btn-default" data-toggle="tooltip" title="tooltip on right" data-placement="right">tooltip</button>
+
+    <h1>7、popover</h1>
+    <button class="btn btn-primary" data-toggle="popover" title="popover title" data-content="this is popover">popover</button>
+
+    <h1>8、carousel</h1>
+
+    <h1>9、collapse</h1>
+
+    <h1>10、scrollspy</h1>
+
+    <h1>11、affix</h1>
+    <div data-spy="affix" data-offset-top="60" data-offset-bottom="200">affix</div>
 
     <script type="text/javascript">
     require(['bootstrap/index'], function (xxx) {
-    	$('#alert')
-    	// .alert() // 不能再执行，连续绑定两次点击事件
-    	.on('close.bs.alert', function () {
-    		console.log(2);
-    	})
-    	.on('closed.bs.alert', function () {
-    		console.log(3);
-    	});
+        // alert
+        $('#alert')
+        // .alert() // 不能再执行，连续绑定两次点击事件
+        .on('close.bs.alert', function () {
+            console.log(2);
+        })
+        .on('closed.bs.alert', function () {
+            console.log(3);
+        });
 
-    	$('#btn').click(function () {
-    		var $this = $(this);
-    		// $this.button('loading');
-    		// setTimeout(function() {
-    		// 	$this.button('reset')
-    		// }, 2000);
-    	});
+        // button
+        $('#btn').click(function () {
+            var $this = $(this);
+            // $this.button('loading');
+            // setTimeout(function() {
+            //  $this.button('reset')
+            // }, 2000);
+        });
+
+
+        // modal
+        
+
+
+        // tooltip
+        // 没有初始化：需要自己调用
+        // show.bs.tooltip shown.bs.tooltip hide.bs.tooltip hidden.bs.tooltip inserted.bs.tooltip
+        $('[data-toggle="tooltip"]').tooltip();
+
+        // popover 同tooltip
+        $('[data-toggle="popover"]').popover();
+
+
+        // affix
+        // 源码中自动初始化是通过 window.onload绑定的
+        // 用require加载bootstrap，window早就onload了
+        $('[data-spy="affix"]').affix({
+            offset: 50
+        })
     });
+
+
     </script>
 </body>
 </html>
