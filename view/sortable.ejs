@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <% include ./include/head.ejs %>
+	<style>
+		body {
+			background-color: #333;
+		}
+
+		.block-list {
+			max-width: 360px;
+		}
+
+		.list {
+			list-style: none;
+		}
+
+		.list li {
+			background-color: #fff;
+			padding: 10px 25px;
+		}
+	</style>
+</head>
+<body>
+	<ul id="foo" class="block-list list">
+		<li draggable="false" class="">бегемот</li>
+		<li>корм</li>
+		<li>антон</li>
+		<li>сало</li>
+		<li>железосталь</li>
+		<li>валик</li>
+		<li>кровать</li>
+		<li>краб</li>
+	</ul>
+    
+
+    <script type="text/javascript">
+    require(['sortable/index'], function (Sortable) {
+    	var sortable = Sortable.create($('#foo')[0])
+    });
+    </script>
+</body>
+</html>
