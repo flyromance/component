@@ -480,7 +480,8 @@ function($) {
                             "upload_start_handler": handlers.onUploadStart,
                             "upload_success_handler": handlers.onUploadSuccess
                         };
-                    swfUploadOptions && (swfUploadSettings = $.extend(swfUploadSettings, swfUploadOptions)), swfUploadSettings = $.extend(swfUploadSettings, settings);
+                    swfUploadOptions && (swfUploadSettings = $.extend(swfUploadSettings, swfUploadOptions));
+                    swfUploadSettings = $.extend(swfUploadSettings, settings);
                     var playerVersion = swfobject.getFlashPlayerVersion(),
                         flashInstalled = playerVersion.major >= 9;
                     if (flashInstalled) {
@@ -495,7 +496,9 @@ function($) {
                                 "width": settings.width + "px"
                             }
                         });
-                        $("#" + swfuploadify.movieName).wrap($wrapper), $wrapper = $("#" + settings.id), $wrapper.data("uploadify", swfuploadify);
+                        $("#" + swfuploadify.movieName).wrap($wrapper);
+                        $wrapper = $("#" + settings.id);
+                        $wrapper.data("uploadify", swfuploadify);
                         var $button = $("<div />", {
                             "id": settings.id + "-button",
                             "class": "uploadify-button " + settings.buttonClass
@@ -503,11 +506,14 @@ function($) {
                         settings.buttonImage && $button.css({
                             "background-image": "url('" + settings.buttonImage + "')",
                             "text-indent": "-9999px"
-                        }), $button.html('<span class="uploadify-button-text">' + settings.buttonText + "</span>").css({
+                        });
+                        $button.html('<span class="uploadify-button-text">' + settings.buttonText + "</span>").css({
                             "height": settings.height + "px",
                             "line-height": settings.height + "px",
                             "width": settings.width + "px"
-                        }), $wrapper.append($button), $("#" + swfuploadify.movieName).css({
+                        });
+                        $wrapper.append($button);
+                        $("#" + swfuploadify.movieName).css({
                             "position": "absolute",
                             "z-index": 1
                         });
@@ -534,8 +540,15 @@ function($) {
                             "queueBytesUploaded": 0,
                             "uploadQueue": [],
                             "errorMsg": "Some files were not added to the queue:"
-                        }, swfuploadify.original = $clone, swfuploadify.wrapper = $wrapper, swfuploadify.button = $button, swfuploadify.queue = $queue, settings.onInit && settings.onInit.call($this, swfuploadify);
-                    } else settings.onFallback && settings.onFallback.call($this);
+                        };
+                        swfuploadify.original = $clone;
+                        swfuploadify.wrapper = $wrapper;
+                        swfuploadify.button = $button;
+                        swfuploadify.queue = $queue;
+                        settings.onInit && settings.onInit.call($this, swfuploadify);
+                    } else {
+                        settings.onFallback && settings.onFallback.call($this);
+                    }
                 });
             },
             "cancel": function(fileID, supressEvent) {
