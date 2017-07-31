@@ -10,7 +10,9 @@
 		}
 
 		.block-list {
-			max-width: 360px;
+			min-width: 360px;
+			float: left;
+			margin-left: 30px;
 		}
 
 		.list {
@@ -21,10 +23,21 @@
 			background-color: #fff;
 			padding: 10px 25px;
 		}
+
+		li.sortable-chosen {
+			background-color: #999;
+			color: #fff;
+		}
+
+		li.sortable-ghost {
+			color: red;
+		}
 	</style>
 </head>
 <body>
-	<ul id="foo" class="block-list list">
+	<a href="http://rubaxa.github.io/Sortable/" style="color: #fff;">example</a>
+	<p>divide</p>	
+	<ul id="foo1" class="block-list list">
 		<li draggable="false" class="">бегемот</li>
 		<li>корм</li>
 		<li>антон</li>
@@ -36,9 +49,51 @@
 	</ul>
     
 
+    <ul id="foo2" class="block-list list">
+		<li draggable="false" class="">бегемот</li>
+		<li>корм</li>
+		<li>антон</li>
+		<li>сало</li>
+		<li>железосталь</li>
+		<li>валик</li>
+		<li>кровать</li>
+		<li>краб</li>
+	</ul>
+
+    <ul id="foo3" class="block-list list">
+		<li draggable="false" class="">бегемот</li>
+		<li>корм</li>
+		<li>антон</li>
+		<li>сало</li>
+		<li>железосталь</li>
+		<li>валик</li>
+		<li>кровать</li>
+		<li>краб</li>
+	</ul>
+
     <script type="text/javascript">
     require(['sortable/index'], function (Sortable) {
-    	var sortable = Sortable.create($('#foo')[0])
+    	var sortable1 = Sortable.create($('#foo1')[0], {
+    		group: {
+    			name: 'a',
+    			pull: true,
+    			put: ['b']
+    		}
+    	});
+    	var sortable2 = Sortable.create($('#foo2')[0], {
+    		group: {
+    			name: 'b',
+    			pull: 'clone', // true false
+    			put: true
+    		}
+    	});
+    	var sortable3 = Sortable.create($('#foo3')[0], {
+    		group: {
+    			name: 'c',
+    			pull: true,
+    			put: ['a']
+    		}
+    	})
     });
     </script>
 </body>
