@@ -1161,7 +1161,6 @@ if (typeof jQuery === 'undefined') {
 
   Modal.prototype.adjustDialog = function () {
     var modalIsOverflowing = this.$element[0].scrollHeight > document.documentElement.clientHeight
-
     this.$element.css({
       paddingLeft: !this.bodyIsOverflowing && modalIsOverflowing ? this.scrollbarWidth : '',
       paddingRight: this.bodyIsOverflowing && !modalIsOverflowing ? this.scrollbarWidth : ''
@@ -1187,6 +1186,7 @@ if (typeof jQuery === 'undefined') {
 
   Modal.prototype.setScrollbar = function () {
     var bodyPad = parseInt((this.$body.css('padding-right') || 0), 10)
+    console.log(bodyPad)
     this.originalBodyPad = document.body.style.paddingRight || ''
     if (this.bodyIsOverflowing) this.$body.css('padding-right', bodyPad + this.scrollbarWidth)
   }
@@ -2364,6 +2364,7 @@ if (typeof jQuery === 'undefined') {
   // ==============
 
   $(window).on('load', function () {
+
     $('[data-spy="affix"]').each(function () {
       var $spy = $(this)
       var data = $spy.data()

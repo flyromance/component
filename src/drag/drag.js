@@ -1,7 +1,7 @@
 /*
 不是浮动元素, getStyle返回 float为none 
 position为static的元素的left值为auto 
-position为relative/absolute/fixed的元素left值为0px, top值为0px
+position为relative/absolute的元素left值为0px, top值为0px
 position为fixed的元素，left为0px，top为之前元素的高度值
 elem.offsetWidth padding * 2 + border * 2 + width
 elem.offsetLeft border开始计算

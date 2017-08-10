@@ -1,0 +1,4 @@
+<input id="select_btn_{{instanceNumber}}" class="selectbtn" style="display:none;" type="file" 
+	name="fileselect[]" {{multi ? "multiple" : ""}} accept="{{fileTypeExts.join(',')}}" />
+<a id="file_upload_{{instanceNumber}}-button" href="javascript:void(0);" class="uploadify-button">{{buttonText}}</a>
+<div id="file_upload_{{instanceNumber}}-queue" class="uploadify-queue"></div>

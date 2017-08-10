@@ -4,41 +4,148 @@
     <meta charset="UTF-8">
     <title>Document</title>
     <% include ./include/head.ejs %>
+    <style>
+        body {
+            /*height: 2000px;*/
+            padding: 20px;
+        }
+    </style>
 </head>
-<body style="padding: 20px;">
+<body>
     
     <div class="glyphicon glyphicon-asterisk"></div>
     
     <h1>1、alert</h1>
     <div class="alert fade in alert-danger" id="alert">
-    	<button type="button" class="close" data-dismiss="alert">&times;</button>
-    	<h4>this is alert</h4>
-    	<p>ddd</p>
+        <button type="button" class="close" data-dismiss="alert">&times;</button>
+        <h4>this is alert</h4>
+        <p>ddd</p>
     </div>
     <button id="btn-close-alert" data-dismiss="alert" data-target="#alert">close alert</button>
 
-	<h1>2、button</h1>
-	<button id="btn" class="btn btn-primary" data-toggle="button">button</button>
+    <h1>2、button</h1>
+    <button id="btn" class="btn btn-primary" data-toggle="button">button</button>
 
+    <div data-fan-long="ddd" data-fanlong="ssss" id="data-test" class="s d f" draggable>data-test</div>
+
+    <h1>3、dropdown</h1>
+    
+    <h1>4、tab</h1>
+
+    <h1>5、modal</h1>
+    <button class="btn btn-danger" data-toggle="modal" data-target="#modal" data-show="false">show modal</button>
+
+    <h1>6、tooltip</h1>
+    <button class="btn btn-default" data-toggle="tooltip" title="tooltip on right" data-placement="right">tooltip</button>
+
+    <h1>7、popover</h1>
+    <button class="btn btn-primary" data-toggle="popover" title="popover title" data-content="this is popover">popover</button>
+
+    <h1>8、carousel</h1>
+
+    <h1>9、collapse</h1>
+
+    <h1>10、scrollspy</h1>
+    <div id="navbar-box">
+        <nav class="navbar navbar-default">
+            <div class="container-fluid">
+                <ul class="nav navbar-nav">
+                    <li class="active"><a href="#fat">@fat</a></li>
+                    <li class=""><a href="#mdo">@mdo</a></li>
+                    <li class=""><a href="#one">one</a></li>
+                    <li class=""><a href="#two">two</a></li>
+                    <li class=""><a href="#three">three</a></li>
+                </ul>
+            </div>
+        </nav>
+    </div>
+    <div data-spy="scroll" data-target="#navbar-box" data-offset="0" class="scrollspy-example" style="position: relative; height:200px; overflow: auto;">
+          <h4 id="fat">@fat</h4>
+          <p>Ad leggings keytar, brunch id art party dolor labore. Pitchfork yr enim lo-fi before they sold out qui. Tumblr farm-to-table bicycle rights whatever. Anim keffiyeh carles cardigan. Velit seitan mcsweeney's photo booth 3 wolf moon irure. Cosby sweater lomo jean shorts, williamsburg hoodie minim qui you probably haven't heard of them et cardigan trust fund culpa biodiesel wes anderson aesthetic. Nihil tattooed accusamus, cred irony biodiesel keffiyeh artisan ullamco consequat.</p>
+          <h4 id="mdo">@mdo</h4>
+          <p>Veniam marfa mustache skateboard, adipisicing fugiat velit pitchfork beard. Freegan beard aliqua cupidatat mcsweeney's vero. Cupidatat four loko nisi, ea helvetica nulla carles. Tattooed cosby sweater food truck, mcsweeney's quis non freegan vinyl. Lo-fi wes anderson +1 sartorial. Carles non aesthetic exercitation quis gentrify. Brooklyn adipisicing craft beer vice keytar deserunt.</p>
+          <h4 id="one">one</h4>
+          <p>Occaecat commodo aliqua delectus. Fap craft beer deserunt skateboard ea. Lomo bicycle rights adipisicing banh mi, velit ea sunt next level locavore single-origin coffee in magna veniam. High life id vinyl, echo park consequat quis aliquip banh mi pitchfork. Vero VHS est adipisicing. Consectetur nisi DIY minim messenger bag. Cred ex in, sustainable delectus consectetur fanny pack iphone.</p>
+          <h4 id="two">two</h4>
+          <p>In incididunt echo park, officia deserunt mcsweeney's proident master cleanse thundercats sapiente veniam. Excepteur VHS elit, proident shoreditch +1 biodiesel laborum craft beer. Single-origin coffee wayfarers irure four loko, cupidatat terry richardson master cleanse. Assumenda you probably haven't heard of them art party fanny pack, tattooed nulla cardigan tempor ad. Proident wolf nesciunt sartorial keffiyeh eu banh mi sustainable. Elit wolf voluptate, lo-fi ea portland before they sold out four loko. Locavore enim nostrud mlkshk brooklyn nesciunt.</p>
+          <h4 id="three">three</h4>
+          <p>Ad leggings keytar, brunch id art party dolor labore. Pitchfork yr enim lo-fi before they sold out qui. Tumblr farm-to-table bicycle rights whatever. Anim keffiyeh carles cardigan. Velit seitan mcsweeney's photo booth 3 wolf moon irure. Cosby sweater lomo jean shorts, williamsburg hoodie minim qui you probably haven't heard of them et cardigan trust fund culpa biodiesel wes anderson aesthetic. Nihil tattooed accusamus, cred irony biodiesel keffiyeh artisan ullamco consequat.</p>
+          <p>Keytar twee blog, culpa messenger bag marfa whatever delectus food truck. Sapiente synth id assumenda. Locavore sed helvetica cliche irony, thundercats you probably haven't heard of them consequat hoodie gluten-free lo-fi fap aliquip. Labore elit placeat before they sold out, terry richardson proident brunch nesciunt quis cosby sweater pariatur keffiyeh ut helvetica artisan. Cardigan craft beer seitan readymade velit. VHS chambray laboris tempor veniam. Anim mollit minim commodo ullamco thundercats.
+          </p>
+    </div>
+
+    <h1>11、affix</h1>
+    <div data-spy="affix" data-offset-top="60" data-offset-bottom="200" >affix</div>
+
+    <!-- modal -->
+    <div class="modal fade" tabindex="-1" role="dialog" id="modal" data-backdrop="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title">Modal title</h4>
+          </div>
+          <div class="modal-body">
+            <p>One fine body&hellip;</p>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary">Save changes</button>
+          </div>
+        </div><!-- /.modal-content -->
+      </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
+    
     <script type="text/javascript">
     require(['bootstrap/index'], function (xxx) {
-    	$('#alert')
-    	// .alert() // 不能再执行，连续绑定两次点击事件
-    	.on('close.bs.alert', function () {
-    		console.log(2);
-    	})
-    	.on('closed.bs.alert', function () {
-    		console.log(3);
-    	});
+        // alert
+        $('#alert')
+        // .alert() // 不能再执行，连续绑定两次点击事件
+        .on('close.bs.alert', function () {
+            console.log(2);
+        })
+        .on('closed.bs.alert', function () {
+            console.log(3);
+        });
 
-    	$('#btn').click(function () {
-    		var $this = $(this);
-    		// $this.button('loading');
-    		// setTimeout(function() {
-    		// 	$this.button('reset')
-    		// }, 2000);
-    	});
+        // button
+        $('#btn').click(function () {
+            var $this = $(this);
+            // $this.button('loading');
+            // setTimeout(function() {
+            //  $this.button('reset')
+            // }, 2000);
+        });
+
+
+        // modal
+
+
+
+        // tooltip
+        // 没有初始化：需要自己调用
+        // show.bs.tooltip shown.bs.tooltip hide.bs.tooltip hidden.bs.tooltip inserted.bs.tooltip
+        $('[data-toggle="tooltip"]').tooltip();
+
+        // popover 同tooltip
+        $('[data-toggle="popover"]').popover();
+
+
+        // 
+        $('[data-spy="scroll"]').scrollspy({
+            target: '#navbar-box'
+        });
+
+
+        // affix
+        // 源码中自动初始化是通过 window.onload绑定的
+        // 用require加载bootstrap，window早就onload了
+        $('[data-spy="affix"]').affix({
+            offset: 50
+        })
     });
+
+
     </script>
 </body>
 </html>
