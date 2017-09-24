@@ -1,0 +1,88 @@
+/*
+ * skin for default
+ */
+
+.layer-box {
+    border: 1px solid #000;
+    background-color: #fff;
+    transform: translate(0 , -100%);
+}
+
+.drop {
+    transition: transform 0.5s linear;
+}
+
+.layer-box.in {
+    transform: translate(0, 0);
+}
+
+.layer-head {
+    text-align: center;
+    background-color: #000000;
+    color: #fff;
+    line-height: 2em;
+    font-size: 1.6rem;
+}
+
+.layer-body {
+    padding: 10px;
+}
+
+.layer-foot {
+    text-align: center;
+}
+
+.layer-closeBtn {
+    position: absolute;
+    z-index: 1000;
+    cursor: pointer;
+    width: 30px;
+    height: 30px;
+    top: 0;
+    right: 0;
+    background-color: red;
+}
+
+.popup-alertBtn {
+    position: absolute;
+    left: 50%;
+    bottom: 10px;
+    margin-left: -50px;
+    width: 100px;
+}
+
+.popup-confirmBtn {
+    width: 100px;
+}
+
+.popup-cancelBtn {
+    width: 100px;
+}
+
+
+/*
+ * skin for a
+ */
+
+.popup-skin-a.popup-box {
+    border: 5px solid #000;
+    border-radius: 5px;
+}
+
+.popup-skin-a .popup-closeBtn {
+    border-radius: 15px;
+    text-align: center;
+    line-height: 30px;
+    font-size: 30px;
+    top: -15px;
+    right: -15px;
+}
+
+.popup-skin-a .popup-alertBtn {
+    border: 1px solid #bbb;
+    border-radius: 3px;
+    padding: 0px 10px;
+    left: auto;
+    right: 30px;
+    line-height: 2;
+}
