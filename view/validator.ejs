@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <% include ./include/head.ejs %>
+</head>
+
+<body>
+    <% include ./include/header.ejs %>
+
+        <form id="the-form" class="form" action="" autocomplete="off" novalidate>
+            <div class="form-group">
+                <label for="username">用户名</label>
+                <input type="text" name="username" id="username" class="form-control" minlength="4" maxlength="20" required 
+                    data-parent=".form-group" />
+                <div class="form-tip">
+
+                </div>
+            </div>
+
+            <div class="form-control">
+                <label for="">数字</label>
+                <input type='number' name="number" min="2" max="10" step="2" required />
+                <div class="tip">
+
+                </div>
+            </div>
+
+            <!-- 二选一 -->
+            <div class="form-control">
+                <label for="">手机号</label>
+                <input type="mobile" name="mobile" data-aorb="a" required/>
+                <div class="tip">
+
+                </div>
+            </div>
+
+            <!-- 二选一 -->
+            <div class="form-control">
+                <label for="">座机号</label>
+                <input type="tel" name="tel" data-aorb="b" required/>
+                <div class="tip">
+
+                </div>
+            </div>
+
+            <div class="form-control">
+                <label for="">邮箱</label>
+                <input type="email" name="email" required />
+                <div class="tip">
+
+                </div>
+            </div>
+
+            <!-- 自带正则 -->
+            <div class="form-control">
+                <label for="">身份证</label>
+                <input type="text" name='identification' data-pattern="^\d{18}$" required />
+                <div class="tip">
+
+                </div>
+            </div>
+
+            <!-- 二者一致 -->
+            <div class="form-control">
+                <label for="">密码</label>
+                <input type="password" name="password" data-same="a" required />
+                <div class="tip">
+
+                </div>
+            </div>
+            <div class="form-control">
+                <label for="">重复密码</label>
+                <input type="password" name="repassword" data-same="a" required />
+                <div class="tip">
+
+                </div>
+            </div>
+
+            <!-- 单选框 -->
+            <div class="form-control">
+                <label for="">性别</label>
+                <input type="radio" name="gener" value="male" required />
+                <input type="radio" name="gener" value="female" required />
+                <div class="tip">
+
+                </div>
+            </div>
+
+
+            <!-- 复选框 -->
+            <div class="form">
+                <label for="">游泳</label>
+                <input type="checkbox" name="favor" value="swimming" required />
+            </div>
+            <input type="checkbox" name="favor" value="basketball" required />
+            <input type="checkbox" name="favor" value="football" required />
+            <input type="checkbox" name="favor" value="coding" required />
+
+
+            <!-- select -->
+            <select name="city" required>
+                <option value="1">北京</option>
+                <option value="2">上海</option>
+                <option value="3">无锡</option>
+                <option value="4">深圳</option>
+            </select>
+
+            <input type="submit" value="submit" />
+        </form>
+
+        <% include ./include/footer.ejs %>
+
+            <script type="text/javascript">
+                require(['validator/index'], function () {
+                    $("#the-form").validator({
+                        klass: 'error',
+                        indetifie: '[required]',
+                        isErrorOnParent: false,
+                        method: 'blur',
+                        before: function () {
+                            console.log('before');
+                        },
+                        after: function () {
+                            console.log('after')
+                        },
+                        errorCallback: function () {
+                            console.log('error')
+                        }
+
+                    });
+                })
+            </script>
+</body>
+
+</html>

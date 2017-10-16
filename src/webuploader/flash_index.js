@@ -1,3 +1,4 @@
+var $ = require('jquery');
 var swfobject = require('./script/swfobject.js');
 
 function SWFUpload(a) {
@@ -405,7 +406,7 @@ SWFUpload.Console.writeLine = function(d) {
     }
 };
 
-function($) {
+(function($) {
     var methods = {
             "init": function(options, swfUploadOptions) {
                 return this.each(function() {
@@ -583,7 +584,7 @@ function($) {
                     var $this = $(this),
                         swfuploadify = $this.data("uploadify"),
                         settings = swfuploadify.settings;
-                    swfuploadify.destroy(), settings.defaultQueue && $("#" + settings.queueID).remove(), $("#" + settings.id).replaceWith(swfuploadify.original), settings.onDestroy && settings.onDestroy.call(this), delete swfuploadify;
+                    swfuploadify.destroy(), settings.defaultQueue && $("#" + settings.queueID).remove(), $("#" + settings.id).replaceWith(swfuploadify.original), settings.onDestroy && settings.onDestroy.call(this), swfuploadify = null;
                 });
             },
             "disable": function(isDisabled) {
@@ -844,4 +845,4 @@ function($) {
         if (typeof method == "object" || !method) return methods.init.apply(this, arguments);
         $.error("The method " + method + " does not exist in $.uploadify");
     };
-}($);
+})($);
