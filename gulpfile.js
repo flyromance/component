@@ -71,7 +71,7 @@ gulp.task('sftp', function () {
 var taskList = ['clean', 'concat', 'webpack'];
 
 
-gulp.task('dev', ['clean', 'concat'])
+gulp.task('lib', ['clean', 'concat'])
 
 gulp.task('build', taskList);
 

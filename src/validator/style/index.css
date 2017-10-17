@@ -1,0 +1,38 @@
+input {
+    outline: none;
+    border: none;
+}
+
+.wrapper {
+    width: 500px;
+    margin: 10px auto;
+}
+
+.form-box {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 10px;
+    background-color: #EEEEEE;
+}
+
+.form-group {
+    margin-bottom: 20px;
+    position: relative;
+}
+
+input.form-control {
+    border: 1px solid #E0E0E0;
+    border-radius: 2px;
+}
+
+.form-tip {
+    display: none;
+    position: absolute;
+    bottom: -20px;
+    left: 0;
+}
+
+.form-group.error .form-tip {
+    display: block;
+    color: red;
+}
