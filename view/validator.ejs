@@ -9,6 +9,7 @@
 
 <body>
     <% include ./include/header.ejs %>
+        
         <div class="wrapper">
             <div class="form-box">
                 <div class="form-header">
@@ -22,19 +23,19 @@
                     </div>
                     <div class="form-group">
                         <label for="">财产</label>
-                        <input type='number' name="number" min="2" max="10" step="2" required class="form-control" />
+                        <input type='number' name="number" min="2" max="10" step="3" required class="form-control" />
                         <div class="form-tip">error</div>
                     </div>
                     <!-- 二选一 -->
                     <div class="form-group">
                         <label for="">手机号</label>
-                        <input type="mobile" name="mobile" data-aorb="a" class="form-control" required/>
+                        <input type="mobile" name="mobile" data-userdefined="alternative" class="form-control" required/>
                         <div class="form-tip">error</div>
                     </div>
                     <!-- 二选一 -->
                     <div class="form-group">
                         <label for="">座机号</label>
-                        <input type="tel" name="tel" class="form-control" data-aorb="b" required/>
+                        <input type="tel" name="tel" class="form-control" data-userdefined="alternative" required/>
                         <div class="form-tip">error</div>
                     </div>
                     <div class="form-group">
@@ -45,26 +46,24 @@
                     <!-- 自带正则 -->
                     <div class="form-group">
                         <label for="">身份证</label>
-                        <input type="text" name='identification' class="form-control" data-pattern="^\d{18}$" required />
+                        <input type="text" name='identification' class="form-control" pattern="^\d{18}$" required />
                         <div class="form-tip">error</div>
                     </div>
                     <!-- 二者一致 -->
                     <div class="form-group">
                         <label for="">密码</label>
-                        <input type="password" name="password" class="form-control" required />
+                        <input type="password" name="password" class="form-control" data-userdefined="equal" required />
                         <div class="form-tip">error</div>
                     </div>
                     <div class="form-group">
                         <label for="">重复密码</label>
-                        <input type="password" name="repassword" class="form-control" data-relative="[name=password]" required />
-                        <div class="form-tip">
-                            error
-                        </div>
+                        <input type="password" name="repassword" class="form-control" data-userdefined="equal" required />
+                        <div class="form-tip">error</div>
                     </div>
                     <!-- 单选框 -->
                     <div class="form-group">
-                        <label for="">性别</label><br>
-                        
+                        <label for="">性别</label>
+                        <br>
                         <input type="radio" name="gener" value="male" required /> 男：
                         <input type="radio" name="gener" value="female" required /> 女：
                         <div class="form-tip">
@@ -73,7 +72,8 @@
                     </div>
                     <!-- 复选框 -->
                     <div class="form-group">
-                        <label for="">爱好</label><br>
+                        <label for="">爱好</label>
+                        <br>
                         <input type="checkbox" name="favor" value="swimming" required /> 游泳：
                         <input type="checkbox" name="favor" value="basketball" required /> 篮球：
                         <input type="checkbox" name="favor" value="football" required /> 足球：
@@ -85,7 +85,7 @@
                     <!-- select -->
                     <div class="form-group">
                         <select name="city" required>
-                            <option ></option>
+                            <option></option>
                             <option value="1">北京</option>
                             <option value="2">上海</option>
                             <option value="3">无锡</option>
@@ -109,16 +109,37 @@
                     indetifie: '[required]',
                     isErrorOnParent: true,
                     method: 'blur',
+                    preventDefault: false, // submit配置了，则这个参数为true
+
                     before: function() {
                         console.log('before');
                     },
-                    after: function() {
-                        console.log('after')
-                    },
-                    errorCallback: function() {
-                        console.log('error')
-                    }
 
+                    // 验证成功才会执行
+                    after: function() {
+                        console.log('after');
+
+                        // 这里可以写 ajax 提交逻辑； 也可以放在submit参数上
+
+                        // 返回false表示，不执行与服务端的交互行为
+                        return false
+                    },
+
+                    // 验证错误执行
+                    errorCallback: function(unvalidFields) {
+                        console.log('error')
+                    },
+
+                    // 阻止默认的提交行为
+                    submit: function() {
+                        console.log('submit')
+                    },
+
+                    afterSubmit: function() {
+                        console.log('afterSubmit')
+                    },
+
+                    trigger: 'input[type=submit]'
                 });
             })
             </script>
