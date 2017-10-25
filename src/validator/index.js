@@ -12,7 +12,7 @@
  * 增加一致性检查功能
  * 
  */
-
+var $ = require('jquery')
 
 require('./style/index.css')
 
