@@ -1,17 +1,14 @@
 var glob = require('glob');
-
-var chunksCache = null
+var config = require('../config');
 
 // type: js or html
 exports.getEntry = function (ext) {
     ext = typeof ext === 'string' ? ext : 'js';
-
-    var filenames = glob.sync('./src/*/*.' + ext);
+    var srcPattern = path.join(config.srcRoot, '*/*.' + ext);
+    var filenames = glob.sync(srcPattern);
     var ret = {};
-    // var reg = /\.\/src\/(.*\/.*)\.js/;
-    var reg = new RegExp('\\.\\/src\\/(.*\\/.*)\\.' + ext);
-
-    chunksCache = [];
+    // var reg = /\/src\/(\w+\/\w+)\.js/;
+    var reg = new RegExp('\\/src\\/(\\w+\\/\\w+)\\.' + ext);
 
     // item的格式与输入的匹配模式一样
     filenames.forEach(function (item, index) {
@@ -19,7 +16,6 @@ exports.getEntry = function (ext) {
 
         if ((match = reg.exec(item)) && match[1]) {
             ret[match[1]] = item;
-            chunksCache.push(match[1]);
         }
     });
 
