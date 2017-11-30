@@ -71,7 +71,7 @@ module.exports = {
     plugins: [
         new webpack.optimize.CommonsChunkPlugin({
             name: 'common',
-            minChunks: 2, // 默认是chunk入口的数量
+            minChunks: 5, // 默认是chunk入口的数量
         }),
 
         new webpack.DefinePlugin({
