@@ -4,12 +4,9 @@
   "description": "",
   "main": "webpack.config.js",
   "scripts": {
-    "dev": "webpack-dev-server --cofing build/webpack.config.js --quiet --color",
-    "prebuild": "rm -rf ./dist",
-    "build": "webpack --progress --colors --display-error-details --display-modules --display-reasons",
-    "gulp:lib": "cross-env NODE_ENV=development gulp lib",
-    "gulp:build": "cross-env NODE_ENV=production gulp build",
-    "gulp:release": "gulp release"
+    "dev": "gulp build && webpack-dev-server --config build/webpack.config.dev.js --color",
+    "build": "cross-env NODE_ENV=production gulp build && node build/build.js",
+    "release": "gulp release"
   },
   "author": "",
   "license": "ISC",
@@ -23,10 +20,12 @@
     "babel-preset-es2015": "^6.24.1",
     "babel-preset-react": "^6.24.1",
     "body-parser": "^1.17.2",
+    "chalk": "^2.3.0",
     "cross-env": "^5.0.1",
     "css-loader": "^0.28.4",
-    "ejs": "^2.5.6",
+    "ejs": "^2.5.7",
     "ejs-loader": "^0.3.0",
+    "extract-text-webpack-plugin": "^2.1.2",
     "file-loader": "^0.11.2",
     "glob": "^7.1.2",
     "gulp": "^3.9.1",
@@ -43,11 +42,13 @@
     "loader-utils": "^1.1.0",
     "minimist": "^1.2.0",
     "node-sass": "^4.5.3",
+    "ora": "^1.3.0",
     "postcss-loader": "^2.0.8",
     "sass-loader": "^6.0.5",
     "style-loader": "^0.18.2",
     "url-loader": "^0.5.9",
     "webpack": "^2.6.1",
-    "webpack-dev-server": "^2.4.5"
+    "webpack-dev-server": "^2.4.5",
+    "webpack-merge": "^4.1.1"
   }
 }

@@ -7,7 +7,6 @@ var minimist = require('minimist');
 
 var webpack = require('webpack');
 var gulpWebpack = require('gulp-webpack');
-var webpackConfig = require('./webpack.config.js');
 
 // var qcdn = require('@q/qcdn');
 // var sftp = require('gulp-sftp');
@@ -18,24 +17,18 @@ var isPrd = !isDev;
 
 // 清除dist文件夹
 gulp.task('clean', function () {
-    return gulp.src('./dist', { read: false }).pipe(clean());
+    return gulp.src('./dist/', { read: false })
+        .pipe(clean());
 });
 
 // 生成核心依赖包
-gulp.task('concat', function () {
+gulp.task('lib', function () {
     return gulp.src(['public/script/core/jquery-1.12.4.js',
-            'public/script/core/require-2.3.3.js',
-            'public/script/core/require.config.js'
-        ])
+        'public/script/core/require-2.3.3.js',
+        'public/script/core/require.config.js'
+    ])
         .pipe(concat('jquery.require.js'))
         .pipe(gulpif(isPrd, uglify()))
-        .pipe(gulp.dest('./dist'));
-});
-
-// webpack生成组件包
-gulp.task('webpack', function () {
-    return gulp.src('./src/*/*.js')
-        .pipe(gulpWebpack(webpackConfig, webpack))
         .pipe(gulp.dest('./dist'));
 });
 
@@ -43,9 +36,9 @@ gulp.task('webpack', function () {
 gulp.task('qcdn', function () {
     qcdn.upload('./dist', {
         // keepName: true, // windows环境不支持“保持文件名”...
-        force:true, 
-        all:true,
-        domains:["s7.qhres.com"]
+        force: true,
+        all: true,
+        domains: ["s7.qhres.com"]
     }).then(function (map) {
         // 不保持文件名：http://s7.qhres.com/static/12dff3213dd312.js
         // 保持文件名：http://s7.qhres.com/!2312kdf/jquery.require.js
@@ -63,16 +56,9 @@ gulp.task('sftp', function () {
             remotePath: '/home/fanlong-so/component/' + path + '/'
         });
     };
-
     gulp.src('./dist/**/*').pipe(createSftp('dist'));
 });
 
-// 
-var taskList = ['clean', 'concat', 'webpack'];
+gulp.task('build', ['clean', 'lib']);
 
-
-gulp.task('lib', ['clean', 'concat'])
-
-gulp.task('build', taskList);
-
-gulp.task('release', taskList.concat('qcdn'));
+// gulp.task('release', taskList.concat('qcdn'));

@@ -97,7 +97,7 @@
      */
     try {
         var CONFIG_PAGE = namespace("App.config.requirejs");
-        var CONFIG_TEST = { baseUrl: "http://localhost:8002/dist/" };
+        var CONFIG_TEST = { baseUrl: "http://localhost:8002/static/" };
         var query = getCurrentScript();
         var mode = getUrlParam("_feb");
         var regs = query.src.match(/^(http:\/\/[^\/]*\/)([^\/]*)\/\S*$/);

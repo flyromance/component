@@ -10,51 +10,38 @@ function resolve(dir) {
 
 module.exports = {
     // context: '', // process.cwd
-    entry: $uitl.getEntry() || {},
+    entry: Object.assign({
+        common: path.join(config.srcRoot, 'common/index.js'),
+    }, $util.getEntry()),
     output: {
         path: config.distRoot,
         filename: '[name].js',
-        // publicPath: '', // 默认就是''
+        publicPath: '/static/', // 默认是''
         chunkFilename: '[name].js', // [id].js
-        libaray: '[name]',
-        libarayTarget: 'amd', // cmd amd global
+        // library: 'mybli',
+        // libraryTarget: 'amd', // cmd amd global
     },
     module: {
         rules: [
             {
                 test: /\.jsx?$/i,
                 exclude: /node_modules/,
-                loader: 'bable-loader',
-            },
-            {
-                test: /\.css$/i,
-                exclude: /node_modules/,
-                loader: [
-                    'style-loader',
-                    'css-loader',
-                    ['postcss-loader', {
-                        plugins: [autoprefixer]
-                    }],
-                ]
-            },
-            {
-                test: /\.scss$/i,
-                exclude: /node_modules/,
-                loader: [
-                    'style-loader',
-                    'css-loader',
-                    ['postcss-loader', {
-                        plugins: [autoprefixer]
-                    }],
-                    'sass-loader',
-                ]
+                loader: 'babel-loader',
             },
             {
                 test: /\.art$/i,
                 include: [resolve('src')],
                 loader: 'art-template-loader',
                 options: {
-                    imports: path.resolve('./template/art.runtime.js')
+                    imports: path.resolve(__dirname, './template/art.runtime.js')
+                }
+            },
+            {
+                test: /\.hbs$/i,
+                include: [resolve('src')],
+                loader: 'handlebars-loader',
+                options: {
+                    // imports: path.resolve('./template/hbs.runtime.js')
                 }
             },
             {
@@ -83,8 +70,8 @@ module.exports = {
     },
     plugins: [
         new webpack.optimize.CommonsChunkPlugin({
-            name: 'common/index',
-            minChunks: 4
+            name: 'common',
+            minChunks: 2, // 默认是chunk入口的数量
         }),
 
         new webpack.DefinePlugin({
@@ -92,16 +79,16 @@ module.exports = {
         }),
 
     ],
-    resoleve: {
+    resolve: {
         alias: {
             '@': resolve('src'),
-        },
-        external: {
-            'jquery': 'window.jQuery', // 外部单独script引用
         },
         // modules: ['node_modules'],
         // extensions: ['', '.js', '.json'], // 注意3版本不需要''
         // mainFields: ['browser', 'module', 'main'], // 指定package.json中查找字段
+    },
+    externals: {
+        // 'jquery': 'window.jQuery', // 外部单独script引用
     },
     // target: 'web', 
 
