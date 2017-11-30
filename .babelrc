@@ -1,9 +1,26 @@
 {
     "presets": [
-        "es2015",
+        [
+            "env",
+            {
+                "targets": {
+                    "browsers": [
+                        "last 2 versions"
+                    ]
+                }
+            }
+        ],
         "react"
     ],
     "plugins": [
-        "transform-runtime"
+        [
+            "transform-runtime",
+            {
+                "helpers": true, // 默认true 不会再每个模块中生成classCallCheck这种helpers函数，也就把helpers提升为一个类
+                "polyfill": true, // 默认true Array的from方法给polyfill，把Promise给polyfill，当成模块引用进来
+                "regenerator": true, // 默认为true regeneratorRuntime这个函数用于转换generator函数, 设为true把这个函数作为模块引入
+                "moduleName": "babel-runtime" // 默认为babel-runtime
+            }
+        ]
     ]
 }

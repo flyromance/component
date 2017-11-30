@@ -9,7 +9,7 @@ var minimist = require('minimist');
 var webpack = require('webpack');
 var gulpWebpack = require('gulp-webpack');
 
-// var qcdn = require('@q/qcdn');
+var qcdn = require('@q/qcdn');
 // var sftp = require('gulp-sftp');
 
 // 环境判断
@@ -19,7 +19,7 @@ var isPrd = !isDev;
 // 清除dist文件夹
 gulp.task('clean', function () {
     rimraf('./dist', function () {
-        
+
     })
 });
 
@@ -37,13 +37,17 @@ gulp.task('lib', function () {
 // 打包后的包上传到cdn
 gulp.task('qcdn', function () {
     qcdn.upload('./dist', {
-        // keepName: true, // windows环境不支持“保持文件名”...
+        keepName: true, // windows环境不支持“保持文件名”...
         force: true,
         all: true,
-        domains: ["s7.qhres.com"]
+        // https: true,
+        domains: [
+            "s0.ssl.qhres.com", "s1.ssl.qhres.com", "s2.ssl.qhres.com", "s3.ssl.qhres.com", "s4.ssl.qhres.com", "s5.ssl.qhres.com"
+        ],
     }).then(function (map) {
         // 不保持文件名：http://s7.qhres.com/static/12dff3213dd312.js
-        // 保持文件名：http://s7.qhres.com/!2312kdf/jquery.require.js
+        // https保持文件名：https://s4.ssl.qhres.com/!062e3de3/drag/index.css
+        // http:  http://s4.qhres.com/!062e3de3/drag/index.css
         console.log(map);
     });
 });
