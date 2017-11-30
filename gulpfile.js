@@ -1,6 +1,7 @@
 var gulp = require("gulp");
 var concat = require("gulp-concat");
 var clean = require("gulp-clean");
+var rimraf = require('rimraf')
 var uglify = require("gulp-uglify");
 var gulpif = require("gulp-if");
 var minimist = require('minimist');
@@ -17,8 +18,9 @@ var isPrd = !isDev;
 
 // 清除dist文件夹
 gulp.task('clean', function () {
-    return gulp.src('./dist/', { read: false })
-        .pipe(clean());
+    rimraf('./dist', function () {
+        
+    })
 });
 
 // 生成核心依赖包
